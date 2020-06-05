@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="common_markdown()">
+    <script th:src="@{/js/markdown/plantuml-encoder.js}"></script>
+    <script th:src="@{/js/markdown/highlight.pack.js}"></script>
+    <script th:src="@{/js/markdown/markdown-it.js}"></script>
+    <script th:src="@{/js/markdown/tui-code-snippet.js}"></script>
+    <script th:src="@{/js/markdown/tui-editor-Viewer.js}"></script>
+    <script th:src="@{/js/markdown/tui-editor-extUML.js}"></script>
+    <script th:src="@{/js/markdown/toMark.js}"></script>
+    <script th:src="@{/js/markdown/squire.js}"></script>
+    <script th:src="@{/js/markdown/squire-raw.js}"></script>
+    <!--    <script th:src="@{/js/markdown/tui-editor-Editor.js}"></script>-->
+    <script th:src="@{/js/markdown/codemirror.js}"></script>
+    <script th:src="@{/js/markdown/plantuml-encoder.js}"></script>
+    <script th:src="@{/js/markdown/tui-editor-extTable.js}"></script>
+
+    <link rel="stylesheet" th:href="@{/css/markdown/github.css}">
+    <link rel="stylesheet" th:href="@{/css/markdown/codemirror.css}">
+    <link rel="stylesheet" th:href="@{/css/markdown/tui-editor-contents.css}">
+</div>
+
+<div th:fragment="common_markdown_edit()">
+
+    <link rel="stylesheet" th:href="@{/css/markdown/tui-editor.css}">
+    <link rel="stylesheet" th:href="@{/css/markdown/codemirror.css}">
+    <link rel="stylesheet" th:href="@{/css/markdown/tui-editor-contents.css}">
+
+    <script th:src="@{/js/markdown/markdown-it.js}"></script>
+    <script th:src="@{/js/markdown/toMark.js}"></script>
+    <script th:src="@{/js/markdown/tui-code-snippet.js}"></script>
+    <script th:src="@{/js/markdown/codemirror.js}"></script>
+    <script th:src="@{/js/markdown/highlight.pack.js}"></script>
+    <script th:src="@{/js/markdown/squire-raw.js}"></script>
+
+    <script th:src="@{/js/markdown/tui-editor-Editor.js}"></script>
+    <script th:src="@{/js/markdown/tui-editor-extTable.js}"></script>
+    <script th:src="@{/js/markdown/plantuml-encoder.js}"></script>
+    <script th:src="@{/js/markdown/tui-editor-extUML.js}"></script>
+
+</div>
+
+
+</html>

@@ -1,0 +1,314 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/commonHead :: common_header(~{::title},~{::link})">
+    <title>设置</title>
+</head>
+<style>
+    #editSection {
+        background-color: #c5e0b9;
+        margin-top: 30px;
+    }
+</style>
+<div th:replace="common/commonHead::common_header_form"></div>
+
+<!-- Chat Box End-->
+<div th:replace="common/commonJS::common_js(~{::script})"></div>
+
+<!-- scrollUp JS
+    ============================================ -->
+<div th:replace="common/commonJS::common_js_scrollUp(~{::script})"></div>
+
+<!-- counterup JS
+    ============================================ -->
+<div th:replace="common/commonJS::common_js_counterup(~{::script})"></div>
+
+<div th:replace="common/commonJS::common_js_pef(~{::script})"></div>
+<div th:replace="common/commonJS::common_js_editor(~{::script})"></div>
+<div th:replace="common/commonJS::common_js_form(~{::script})"></div>
+
+<!-- =================== MarkDown ============== -->
+<div th:replace="common/commonMarkDown::common_markdown_edit"></div>
+
+
+<body class="darklayout">
+
+<div class="wrapper-pro">
+
+    <div th:replace="common/commonLeft::common_left(~{::name})"></div>
+
+    <div class="content-inner-all">
+
+        <div th:replace="common/commonTop::common_top(~{::name})"></div>
+        <form id="content-form" th:action="@{/content/insert}" method="post" class="basic-login-form-ad">
+            <div class="code-editor-area mg-b-40">
+                <div class="container-fluid tab-content">
+                    <div id="composeContent"
+                         class="tab-pane fade in animated zoomInDown shadow-reset custom-inbox-message active">
+                        <div class="view-mail-wrap">
+                            <div class="mail-title">
+                                <h2>Compose Mail</h2>
+                                <div class="view-mail-action">
+                                    <a th:onclick="contentUtils.send()"><i class="fa fa fa-floppy-o"></i> 保存</a>
+                                    <a class="compose-discard-bt" href="#"><i class="fa fa-reply-all"></i>取消</a>
+                                    <a class="compose-discard-bt" href="#"><i class="fa fa-times"></i> 删除</a>
+                                </div>
+                            </div>
+                            <div class="form-group-inner">
+                                <div class="row">
+                                    <div class="col-lg-1">
+                                        <label class="login2 pull-right pull-right-pro">标题</label>
+                                    </div>
+                                    <div class="col-lg-11">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group-inner">
+                                <div class="row">
+                                    <div class="col-lg-1">
+                                        <label class="login2 pull-right pull-right-pro">
+                                            <span class="basic-ds-n">状态</span></label>
+                                    </div>
+                                    <div class="col-lg-11">
+                                        <div class="bt-df-checkbox">
+                                            <input class="pull-left radio-checked" type="radio" checked=""
+                                                   value="option1" id="optionsRadios1" name="optionsRadios">
+                                            <input class="pull-left" type="radio" value="option2"
+                                                   id="optionsRadios2" name="optionsRadios">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group-inner">
+                                <div class="row form-group data-custon-pick" id="data_1">
+                                    <div class="col-lg-1">
+                                        <label class="login2 pull-right pull-right-pro">
+                                            <span class="basic-ds-n">发布时间</span></label>
+                                    </div>
+                                    <div class="col-lg-11 date-picker-inner">
+                                        <div class="input-group date">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            <input type="text" class="form-control" value="08/09/2018">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sparkline16-list shadow-reset mg-t-30">
+                                <div class="sparkline16-hd">
+                                    <div class="main-sparkline16-hd">
+                                        <h1>Data picker</h1>
+                                        <div class="sparkline16-outline-icon">
+                                            <span class="sparkline16-collapse-link"><i class="fa fa-chevron-up"></i></span>
+                                            <span><i class="fa fa-wrench"></i></span>
+                                            <span class="sparkline16-collapse-close"><i class="fa fa-times"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sparkline16-graph">
+                                    <div class="date-picker-inner">
+                                        <div class="form-group data-custon-pick" id="data_1">
+                                            <label>Simple data input format</label>
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                <input type="text" class="form-control" value="10/04/2018">
+                                            </div>
+                                        </div>
+                                        <div class="form-group data-custon-pick" id="data_2">
+                                            <label>One Year view</label>
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                <input type="text" class="form-control" value="08/09/2018">
+                                            </div>
+                                        </div>
+                                        <div class="form-group data-custon-pick" id="data_3">
+                                            <label>Decade view</label>
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                <input type="text" class="form-control" value="10/11/2013">
+                                            </div>
+                                        </div>
+                                        <div class="form-group data-custon-pick" id="data_4">
+                                            <label>Month select</label>
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                <input type="text" class="form-control" value="07/01/2014">
+                                            </div>
+                                        </div>
+                                        <div class="form-group data-custon-pick data-custom-mg" id="data_5">
+                                            <label>Range select</label>
+                                            <div class="input-daterange input-group" id="datepicker">
+                                                <input type="text" class="form-control" name="start" value="05/14/2014">
+                                                <span class="input-group-addon">to</span>
+                                                <input type="text" class="form-control" name="end" value="05/22/2014">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group-inner">
+                                <div class="row">
+                                    <div class="col-lg-1">
+                                        <label class="login2 pull-right pull-right-pro">模板类型</label>
+                                    </div>
+                                    <div class="col-lg-11">
+                                        <div class="form-select-list">
+                                            <select class="form-control custom-select-value" name="account">
+                                                <option>Select 1</option>
+                                                <option>Select 2</option>
+                                                <option>Select 3</option>
+                                                <option>Select 4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div id="editSection"></div>
+                            </div>
+                            <div class="sparkline10-graph">
+                                <div class="col-lg-12">
+                                    <label class="login2 pull-right pull-right-pro">
+                                        <span class="basic-ds-n">标签</span></label>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="dual-list-box-inner">
+                                        <div class="bootstrap-duallistbox-container row moveonselect">
+                                            <div class="box1 col-md-6"><label
+                                                    for="bootstrap-duallistbox-nonselected-list_"
+                                                    style="display: none;"></label> <span
+                                                    class="info-container">     <span
+                                                    class="info">Showing all 10</span>     <button
+                                                    type="button"
+                                                    class="btn clear1 pull-right btn-default btn-xs">show all</button>   </span>
+                                                <input class="filter form-control" type="text"
+                                                       placeholder="Filter">
+                                                <div class="btn-group buttons">
+                                                    <button type="button" class="btn moveall btn-default"
+                                                            title="Move all"><i
+                                                            class="glyphicon glyphicon-arrow-right"></i> <i
+                                                            class="glyphicon glyphicon-arrow-right"></i>
+                                                    </button>
+                                                    <button type="button" class="btn move btn-default"
+                                                            title="Move selected"><i
+                                                            class="glyphicon glyphicon-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                                <select multiple="multiple"
+                                                        id="bootstrap-duallistbox-nonselected-list_"
+                                                        class="form-control" name="_helper1"
+                                                        style="height: 162px;">
+                                                    <option value="United States">United States</option>
+                                                    <option value="United Kingdom">United Kingdom</option>
+                                                    <option value="Australia">Australia</option>
+                                                    <option value="Barbados">Barbados</option>
+                                                    <option value="Belgium">Belgium</option>
+                                                    <option value="Bermuda">Bermuda</option>
+                                                    <option value="Brazil">Brazil</option>
+                                                    <option value="Bulgaria">Bulgaria</option>
+                                                    <option value="Cameroon">Cameroon</option>
+                                                    <option value="Canada">Canada</option>
+                                                </select></div>
+                                            <div class="box2 col-md-6"><label
+                                                    for="bootstrap-duallistbox-selected-list_"
+                                                    style="display: none;"></label> <span
+                                                    class="info-container">     <span
+                                                    class="info">Showing all 2</span>     <button
+                                                    type="button"
+                                                    class="btn clear2 pull-right btn-default btn-xs">show all</button>   </span>
+                                                <input class="filter form-control" type="text"
+                                                       placeholder="Filter">
+                                                <div class="btn-group buttons">
+                                                    <button type="button" class="btn remove btn-default"
+                                                            title="Remove selected"><i
+                                                            class="glyphicon glyphicon-arrow-left"></i>
+                                                    </button>
+                                                    <button type="button" class="btn removeall btn-default"
+                                                            title="Remove all"><i
+                                                            class="glyphicon glyphicon-arrow-left"></i> <i
+                                                            class="glyphicon glyphicon-arrow-left"></i>
+                                                    </button>
+                                                </div>
+                                                <select multiple="multiple"
+                                                        id="bootstrap-duallistbox-selected-list_"
+                                                        class="form-control" name="_helper2"
+                                                        style="height: 162px;">
+                                                    <option selected="" value="Austria">Austria</option>
+                                                    <option selected="" value="Bahamas">Bahamas</option>
+                                                </select></div>
+                                        </div>
+                                        <select class="form-control dual_select" multiple=""
+                                                style="display: none;">
+                                            <option value="United States">United States</option>
+                                            <option value="United Kingdom">United Kingdom</option>
+                                            <option value="Australia">Australia</option>
+                                            <option selected="" value="Austria">Austria</option>
+                                            <option selected="" value="Bahamas">Bahamas</option>
+                                            <option value="Barbados">Barbados</option>
+                                            <option value="Belgium">Belgium</option>
+                                            <option value="Bermuda">Bermuda</option>
+                                            <option value="Brazil">Brazil</option>
+                                            <option value="Bulgaria">Bulgaria</option>
+                                            <option value="Cameroon">Cameroon</option>
+                                            <option value="Canada">Canada</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <textarea id="contentBody" style="display: none" name="contentBody"
+                      th:text="${data==null?'新文档':data.contentBody}">
+        </textarea>
+        </form>
+    </div>
+
+
+</div>
+<script class="code-js">
+
+    var content = "";
+    var editor;
+
+    if ("" != ($("#contentBody").val())) {
+        content = antStringUtils.splitToArray($("#contentBody").val()).join("\n");
+        console.log(content);
+    } else {
+        console.log("Content is null");
+    }
+
+    editor = new tui.Editor({
+        el: document.querySelector('#editSection'),
+        previewStyle: 'vertical',
+        height: '400px',
+        initialValue: content,
+        exts: ['table', 'uml']
+    });
+
+    var contentUtils = {
+        send: function () {
+
+            var newContent = editor.getValue();
+            console.log(newContent)
+
+            $("#contentBody").val(newContent);
+            $("#content-form").submit();
+        },
+        revert: function () {
+            window.location.href = "";
+        },
+        delete: function () {
+
+        }
+
+    }
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+server:
+  port: 8080
+default:
+  properties:
+    database:
+      host: 127.0.0.1
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://${default.properties.database.host}:3306/antblog?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false&allowMultiQueries=true
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    continue-on-error: true
+    sql-script-encoding: UTF-8
+    data-username: root
+    hikari:
+      maximum-pool-size: 15
+      minimum-idle: 5
+      jdbc-url: ${spring.datasource.url}
+      username: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+      allow-pool-suspension: true
+      auto-commit: true
+      idle-timeout: 300000
+      pool-name: DatebookHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 300000
+      connection-test-query: SELECT 1
+mybatis-plus:
+  configuration:
+    cache-enabled: true
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false
+    multiple-result-sets-enabled: true
+    use-column-label: true
+    use-generated-keys: false
+    auto-mapping-behavior: partial
+    default-executor-type: simple
+    default-statement-timeout: 2500
+    default-fetch-size: 25
+    safe-row-bounds-enabled: false
+    map-underscore-to-camel-case: true
+    localCacheScope: statement
+    jdbcTypeForNull: null
+    callSettersOnNulls: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:/mapper/*Mapper.xml

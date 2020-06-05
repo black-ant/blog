@@ -1,0 +1,130 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/commonHead :: common_header(~{::title},~{::link})">
+    <title>Blog Content</title>
+</head>
+
+<body class="darklayout">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- Header top area start-->
+<div class="wrapper-pro">
+
+
+    <div th:replace="common/commonLeft::common_left(~{::name})"></div>
+
+    <!-- Header top area start-->
+    <div class="content-inner-all">
+
+        <div th:replace="common/commonTop::common_top(~{::name})"></div>
+
+        <!-- Breadcome start-->
+        <div th:replace="common/commonAddr::common_address('内容列表')"></div>
+
+        <!-- Breadcome End-->
+        <!-- Static Table Start -->
+        <div class="data-table-area mg-b-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="sparkline13-list shadow-reset">
+                            <div class="sparkline13-hd">
+                                <div class="main-sparkline13-hd">
+                                    <h1>Projects <span class="table-project-n">Data</span> Table</h1>
+                                    <div class="sparkline13-outline-icon">
+                                        <span class="sparkline13-collapse-link"><i class="fa fa-chevron-up"></i></span>
+                                        <span><i class="fa fa-wrench"></i></span>
+                                        <span>
+                                            <button type="button" class="btn btn-primary"
+                                                    onclick="javascript:window.location.href='./get/null'">添加</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sparkline13-graph">
+                                <div class="datatable-dashv1-list custom-datatable-overright">
+                                    <div id="toolbar">
+                                        <select class="form-control">
+                                            <option value="">Export Basic</option>
+                                            <option value="all">Export All</option>
+                                            <option value="selected">Export Selected</option>
+                                        </select>
+                                    </div>
+                                    <table id="table" data-toggle="table" data-pagination="true" data-search="true"
+                                           data-show-columns="true" data-show-pagination-switch="true"
+                                           data-show-refresh="true" data-key-events="true" data-show-toggle="true"
+                                           data-resizable="true" data-cookie="true" data-cookie-id-table="saveId"
+                                           data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar" >
+                                        <thead>
+                                        <tr>
+                                            <th data-field="state" data-checkbox="true"></th>
+                                            <th data-field="id">主键</th>
+                                            <th data-field="contentTitle" data-editable="true">标题</th>
+                                            <th data-field="contentInfo" data-editable="true">详情</th>
+                                            <th data-field="contentOrder" data-editable="true">排序</th>
+                                            <th data-field="contentBodyType" data-editable="true">内容类型</th>
+                                            <th data-field="createUser">创建人</th>
+                                            <th data-field="createDate">创建人</th>
+                                            <th data-field="action">Action</th>
+                                        </tr>
+
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="data:${datalist}">
+                                            <td></td>
+                                            <td th:text="${data.id}"></td>
+                                            <td th:text="${data.contentTitle}"></td>
+                                            <td th:text="${data.contentInfo}"></td>
+                                            <td th:text="${data.contentOrder}"></td>
+                                            <td th:text="${data.contentBodyType}"></td>
+                                            <td th:text="${data.createUser}"></td>
+                                            <td th:text="${data.createDate}"></td>
+                                            <td class="datatable-ct">
+                                                <button type="button" class="btn btn-primary"
+                                                        th:onclick="window.open('/content/get/'+'[(${data.id})]')">编辑
+                                                </button>
+                                                <button type="button" class="btn btn-primary">删除</button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Static Table End -->
+    </div>
+</div>
+<!-- Breadcome start-->
+<div th:replace="common/commonFooter::common_footer()"></div>
+
+<!-- Chat Box End-->
+<div th:replace="common/commonJS::common_js(~{::script})"></div>
+<!-- counterup JS
+    ============================================ -->
+<script th:src="@{/js/counterup/jquery.counterup.min.js}"></script>
+<script th:src="@{/js/counterup/waypoints.min.js}"></script>
+<!-- peity JS
+    ============================================ -->
+<script th:src="@{/js/peity/jquery.peity.min.js}"></script>
+<script th:src="@{/js/peity/peity-active.js}"></script>
+<!-- sparkline JS
+    ============================================ -->
+<script th:src="@{/js/sparkline/jquery.sparkline.min.js}"></script>
+<script th:src="@{/js/sparkline/sparkline-active.js}"></script>
+
+<div th:replace="common/commonJS::common_js_table(~{::script})"></div>
+<!-- main JS
+    ============================================ -->
+<script th:src="@{/js/main.js}"></script>
+
+
+</body>
+
+</html>

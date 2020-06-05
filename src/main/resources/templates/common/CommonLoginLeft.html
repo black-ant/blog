@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="common_login_left(name)">
+    <nav id="sidebar">
+        <div class="left-custom-menu-adp-wrap">
+            <ul class="nav navbar-nav left-sidebar-menu-pro">
+                <li class="nav-item">
+                    <a th:href="@{/login}">
+                        <i class="fa big-icon fa-home"></i>
+                        <span class="mini-dn">账号密码登录</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/loginSms}">
+                        <i class="fa big-icon fa-home"></i>
+                        <span class="mini-dn">短信验证码登录</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/loginEmail}">
+                        <i class="fa big-icon fa-home"></i>
+                        <span class="mini-dn">邮箱验证码登录</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+</html>
