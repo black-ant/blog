@@ -23,13 +23,19 @@
               <a href="#page-top"></a>
             </li>
             <li class="page-scroll">
-              <a href="#portfolio">门户</a>
+              <a href="/blogIndex">门户</a>
             </li>
             <li class="page-scroll">
-              <a href="#about">作品</a>
+              <a href="/blogProject">博客</a>
             </li>
             <li class="page-scroll">
-              <a href="#contact">关于我</a>
+              <a href="/blogProject">作品</a>
+            </li>
+            <li class="page-scroll">
+              <a href="/blogDoclist">笔记本</a>
+            </li>
+            <li class="page-scroll">
+              <a href="/blogAbout">关于我</a>
             </li>
           </ul>
         </div>

@@ -6,19 +6,25 @@ import HelloWorld from '@/components/HelloWorld'
 import index from '@/pages/index'
 import blogIndex from '@/pages/blog-index'
 import blogProject from '@/pages/blog-project'
-// import indexJS from '@/pages/indexJS'
-// import indexJQuery from '@/pages/indexJQuery'
-// import indexBootStrap from '@/pages/indexBootStrap'
-// import indexAxios from '@/pages/indexAxios'
+import blogDocview from '@/pages/blog-docview'
+import indexCss from '@/pages/indexCss'
+import blogDoclist from '@/pages/blog-doclist'
+import blogAbout from '@/pages/blog-about'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    {
+      path: '/indexCss',
+      name: 'indexCss',
+      component: indexCss
     },
     {
       path: '/hello',
@@ -34,6 +40,21 @@ export default new Router({
       path: '/blogProject',
       name: 'blogProject',
       component: blogProject
+    },
+    {
+      path: '/blogDocview',
+      name: 'blogDocview',
+      component: blogDocview
+    },
+    {
+      path: '/blogDoclist',
+      name: 'blogDoclist',
+      component: blogDoclist
+    },
+    {
+      path: '/blogAbout',
+      name: 'blogAbout',
+      component: blogAbout
     }
   ]
 })
