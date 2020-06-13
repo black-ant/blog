@@ -48,19 +48,10 @@ public class StartBlogController {
     }
 
     @GetMapping(value = "/blog/{page}", produces = {"application/json"})
-    public ModelAndView getBlog(@PathVariable("page") Integer pageNum) {
-        ModelAndView model = new ModelAndView();
-
-        //        QueryWrapper<AntBlogContent> wrapper = new QueryWrapper<>();
+    public ResponseModel<IPage<AntBlogContent>> getBlog(@PathVariable("page") Integer pageNum) {
         IPage<AntBlogContent> pageObj = new Page<>(pageNum, 3);
         IPage<AntBlogContent> pageResult = contentService.page(pageObj);
-        logger.info("------> result :{} <-------", pageResult.getPages());
-        logger.info("------> result :{} <-------", pageResult.getTotal());
-        //        logger.info("------> result :{} <-------", JSONObject.toJSONString(pageResult));
-
-        model.addObject("pageList", pageResult);
-        model.setViewName("blog/blog");
-        return model;
+        return ResponseModel.commonResponse(pageResult);
     }
 
     @GetMapping(value = "/read/{key}", produces = {"application/json"})
