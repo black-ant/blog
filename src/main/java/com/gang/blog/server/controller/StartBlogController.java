@@ -99,6 +99,7 @@ public class StartBlogController {
 
     @GetMapping(value = "/view/{key}", produces = {"application/json"})
     public ResponseModel readBlog(@PathVariable("key") String key) {
+        logger.info("------> this is in view <-------");
         AntBlogContent content = contentService.getById(key);
         return ResponseModel.commonResponse(content);
     }
