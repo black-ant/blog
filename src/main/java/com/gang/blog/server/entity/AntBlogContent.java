@@ -1,5 +1,6 @@
 package com.gang.blog.server.entity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gang.blog.server.entity.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -28,6 +29,8 @@ public class AntBlogContent extends BaseEntity {
 
     private String contentBody;
 
+    private String contentCode;
+
     private String contentTitle;
 
     private String contentInfo;
@@ -42,7 +45,7 @@ public class AntBlogContent extends BaseEntity {
 
     private String createUser;
 
-    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date createDate;
 
     /**

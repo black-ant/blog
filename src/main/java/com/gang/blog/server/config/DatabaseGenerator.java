@@ -25,17 +25,16 @@ import java.util.List;
 public class DatabaseGenerator {
 
     //    private static String[] tableList = {
-    //            "ant_blog_content", "ant_blog_tag", "ant_blog_template",
-    //            "ant_blog_type", "ant_blog_user"
+    //            "ant_blog_project"
     //    };
     //
     //    private static String parentName = "com.gang.blog.server";
     //    private static String moduleName = "";
     //    // 模板引擎配置
     //    private static String templatePath = "/templates/mapper.xml.vm";
-    //
-    //
-    //    public void main(String[] args) {
+
+
+    //    public static void main(String[] args) {
     //        // 代码生成器
     //        AutoGenerator mpg = new AutoGenerator();
     //

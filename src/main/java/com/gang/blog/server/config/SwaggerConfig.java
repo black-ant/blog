@@ -20,23 +20,4 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
-    @Bean
-    public Docket createRestApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com.gang.blog.server.controller"))
-                .paths(PathSelectors.any())
-                .build();
-    }
-
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title("Ant Blog")
-                .description("swagger api 描述")
-                .termsOfServiceUrl("www.baidu.com")
-                .contact("ant-black")
-                .version("1.0")
-                .build();
-    }
 }

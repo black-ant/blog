@@ -33,8 +33,6 @@ spring:
       max-lifetime: 1800000
       connection-timeout: 300000
       connection-test-query: SELECT 1
-  profiles:
-    active: dev
 mybatis-plus:
   configuration:
     cache-enabled: true
@@ -54,3 +52,7 @@ mybatis-plus:
     callSettersOnNulls: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath*:/mapper/*Mapper.xml
+gang:
+  common:
+    swagger:
+      basePackage: "com.gang.blog"
