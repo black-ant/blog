@@ -1,5 +1,6 @@
 package com.gang.blog.server.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gang.blog.server.entity.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -59,6 +60,7 @@ public class AntBlogType extends BaseEntity {
     /**
      * 修改时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateDate;
 
     /**

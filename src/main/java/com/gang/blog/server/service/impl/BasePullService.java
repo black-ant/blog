@@ -44,17 +44,30 @@ public abstract class BasePullService {
      * @return
      */
     public Boolean pullLogic(String filePath, AntBlogDocRequestTO docRequestTO) {
+
+        logger.info("------> pullLogic :{} <-------", filePath);
+
+        // Get folder Map Suffix
         Map<String, File> files = FileUtils.getFilesMapNoSuffix(filePath);
         if (!CollectionUtils.isEmpty(files)) {
+
             File settingFile = files.get(docRequestTO.getSettingFile());
+
             String config = FileUtil.isEmpty(settingFile) ? "" : FileUtil.readString(settingFile, "UTF-8");
             AntBlogDocTO antBlogDocTO = StringUtils.isNotEmpty(config) ? JSONObject.parseObject(config, AntBlogDocTO.class) : null;
+
+            // Get files
             files.keySet().forEach(item -> {
                 File fileItem = files.get(item);
+
+                // If it is a configuration file : BLOG.md
                 if (checkFile(fileItem)) {
+
+                    // If it is a folder, recursive query
                     if (FileUtil.isDirectory(fileItem)) {
                         pullLogic(fileItem.getPath(), docRequestTO);
                     } else {
+
                         if (antBlogDocTO != null && antBlogDocTO.getItemMap() != null) {
                             AntBlogDocTO blogDocTOChild = antBlogDocTO.getItemMap().get(BlogFileUtils.getFileName(fileItem.getName()));
                             if (blogDocTOChild != null) {

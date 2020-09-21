@@ -49,10 +49,25 @@ public class BlogFileUtils {
         return parentPath;
     }
 
+    /**
+     * @param file
+     * @return
+     */
+    public static String getFileContent(File file) {
+        return FileUtil.readString(file, "UTF-8");
+    }
+
+    /**
+     * 通过名称获取 Doc
+     *
+     * @param name
+     * @return
+     */
     public static String getFileName(String name) {
         name = StringUtils.replace(name, ".md", "");
         name = StringUtils.replace(name, ".txt", "");
-//        name = StringUtils.replace(name, " ", "");
+        //        name = StringUtils.replace(name, " ", "");
         return name;
     }
+
 }

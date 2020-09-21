@@ -41,6 +41,10 @@ public class AntBlogContent extends BaseEntity {
 
     private String contentBodyType;
 
+    private String contentStart;
+
+    private String contentHot;
+
     private String contentExt;
 
     private String createUser;

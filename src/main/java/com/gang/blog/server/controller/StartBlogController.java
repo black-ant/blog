@@ -15,7 +15,6 @@ import com.gang.blog.server.service.impl.AntBlogProjectServiceImpl;
 import com.gang.blog.server.service.impl.AntBlogTypeServiceImpl;
 import com.gang.common.lib.to.ResponseModel;
 import org.apache.commons.lang3.StringUtils;
-import org.checkerframework.checker.units.qual.A;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.List;
@@ -90,10 +88,29 @@ public class StartBlogController {
         return ResponseModel.commonResponse(project).addInfo("pojectList", cacheTagMap.get("project"));
     }
 
-    @GetMapping(value = "/docs/{page}", produces = {"application/json"})
-    public ResponseModel<IPage<AntBlogContent>> getBlog(@PathVariable("page") Integer pageNum) {
+    @GetMapping(value = "/docs/{type}/{page}", produces = {"application/json"})
+    public ResponseModel<IPage<AntBlogContent>> getBlog(@PathVariable("type") String type, @PathVariable("page") Integer pageNum) {
+
         IPage<AntBlogContent> pageObj = new Page<>(pageNum, 3);
-        IPage<AntBlogContent> pageResult = contentService.page(pageObj);
+        QueryWrapper<AntBlogContent> wrapper = new QueryWrapper();
+        switch (type) {
+            case "new":
+                wrapper.orderByDesc("create_date");
+                break;
+            case "hot":
+                wrapper.orderByDesc("content_hot");
+                break;
+            case "start":
+                wrapper.orderByDesc("content_start");
+                break;
+            case "order":
+                wrapper.orderByDesc("content_order");
+                break;
+            default:
+                wrapper.orderByDesc("create_date");
+        }
+
+        IPage<AntBlogContent> pageResult = contentService.page(pageObj, wrapper);
         return ResponseModel.commonResponse(pageResult);
     }
 
