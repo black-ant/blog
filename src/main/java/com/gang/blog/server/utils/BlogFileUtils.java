@@ -5,9 +5,11 @@ import com.gang.blog.server.exception.AntBlogException;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.ResourceUtils;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -28,7 +30,7 @@ public class BlogFileUtils {
      */
     public static String createGitFile() {
         try {
-            String path = getProgramPath();
+            String path = getJarPath();
             String fileSeparator = System.getProperty("file.separator");
             String newDir = path + fileSeparator + "blogDoc" + fileSeparator;
             FileUtil.mkdir(newDir);
@@ -38,7 +40,20 @@ public class BlogFileUtils {
         }
     }
 
+
     /**
+     * 获取当前 Jar 所在的路径 , 和 JAR 平级 , Linux 中不友好
+     *
+     * @return
+     * @throws FileNotFoundException
+     */
+    public static String getJarPath() throws FileNotFoundException {
+        return new File(ResourceUtils.getURL("classpath:").getPath()).getParentFile().getParentFile().getParent();
+    }
+
+    /**
+     * 获取当前Target 所在的路径
+     *
      * @return
      * @throws UnsupportedEncodingException
      */

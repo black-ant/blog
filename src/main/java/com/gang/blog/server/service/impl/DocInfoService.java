@@ -68,7 +68,7 @@ public class DocInfoService {
             Integer collectionName = filePath.lastIndexOf("\\") > 0 ? filePath.lastIndexOf("\\") + 1 : 0;
             addValue(blogMD, "name", filePath.substring(collectionName, filePath.length()));
             addValue(blogMD, "desc", filePath.substring(collectionName, filePath.length()));
-            addValue(blogMD, "code", "OTHER");
+            addValue(blogMD, "code", filePath.substring(collectionName, filePath.length()));
             addValue(blogMD, "classType", "COLLECTION");
             addValue(blogMD, "status", "OPEN");
 
@@ -93,9 +93,9 @@ public class DocInfoService {
      * @param value
      */
     public void addValue(JSONObject build, String name, String value) {
-        if (!build.containsKey(name)) {
-            build.put(name, value);
-        }
+        //        if (!build.containsKey(name)) {
+        build.put(name, value);
+        //        }
     }
 
     /**

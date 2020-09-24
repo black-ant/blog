@@ -12,6 +12,7 @@ import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -87,7 +88,7 @@ public class GitPullService extends BasePullService {
         UsernamePasswordCredentialsProvider usernamePasswordCredentialsProvider = new
                 UsernamePasswordCredentialsProvider("username", "password");
         String localPath = BlogFileUtils.createGitFile();
-
+        logger.info("------> cloneGit : local path :{} <-------", localPath);
         if (FileUtil.isDirectory(localPath + ".git")) {
             Git git = new Git(new FileRepository(localPath + "/.git"));
             git.pull().call();

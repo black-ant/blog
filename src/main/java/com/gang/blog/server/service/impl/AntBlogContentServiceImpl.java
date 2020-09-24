@@ -34,7 +34,7 @@ public class AntBlogContentServiceImpl extends ServiceImpl<AntBlogContentMapper,
     public AntBlogContent getOneByType(String blogType) {
         IPage<AntBlogContent> userIPage = baseMapper.selectPage(new Page<AntBlogContent>(1, 1), MybatisQueryWrapper.buildEq("BLOG_TYPE", blogType));
         AntBlogContent content = null;
-        if (userIPage.getSize() > 0) {
+        if (userIPage.getSize() > 0 && !userIPage.getRecords().isEmpty()) {
             content = userIPage.getRecords().get(0);
         }
         return content;
