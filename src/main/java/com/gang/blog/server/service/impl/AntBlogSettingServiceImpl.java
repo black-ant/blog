@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author ant-black
@@ -21,14 +21,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class AntBlogSettingServiceImpl extends ServiceImpl<AntBlogSettingMapper, AntBlogSetting> implements IAntBlogSettingService {
 
-    /**
-     * 根据 Name 查询单个 AntBlogSetting
-     *
-     * @param blogType
-     * @return
-     */
-    public AntBlogSetting getOneByName(String blogType) {
-        IPage<AntBlogSetting> userIPage = baseMapper.selectPage(new Page<AntBlogSetting>(1, 1), MybatisQueryWrapper.buildEq("setting_name", blogType));
+    public AntBlogSetting getOneByName(String settinName) {
+        return getOneByKeyAndValue("setting_name", settinName);
+    }
+
+    public AntBlogSetting getOneByCode(String settingCode) {
+        return getOneByKeyAndValue("setting_code", settingCode);
+    }
+
+
+    public AntBlogSetting getOneByKeyAndValue(String key, String value) {
+        IPage<AntBlogSetting> userIPage = baseMapper.selectPage(
+                new Page<AntBlogSetting>(1, 1),
+                MybatisQueryWrapper.buildEq("key", value)
+        );
+
         AntBlogSetting setting = null;
         if (userIPage.getSize() > 0 && !userIPage.getRecords().isEmpty()) {
             setting = userIPage.getRecords().get(0);

@@ -1,6 +1,7 @@
 package com.gang.blog.server.controller;
 
 import com.gang.blog.server.service.impl.AntBlogSettingServiceImpl;
+import com.gang.blog.server.service.impl.AntProperties;
 import com.gang.blog.server.service.impl.FilePullService;
 import com.gang.blog.server.service.impl.GitPullService;
 import com.gang.blog.server.to.AntBlogDocRequestTO;
@@ -36,7 +37,7 @@ public class AntBlogContentPullController {
     private FilePullService filePullService;
 
     @Autowired
-    private AntBlogSettingServiceImpl settingService;
+    private AntProperties antProperties;
 
     @PostMapping(value = "/bypath")
     public ResponseModel getBlogByPath(@RequestBody AntBlogDocRequestTO docRequestTO) {
@@ -54,6 +55,12 @@ public class AntBlogContentPullController {
     @Scheduled(cron = "0 0 22 1/1 * ? ")
     public void scheduledPullGitInfo() {
         logger.info("------> this is in  scheduledPullGitInfo<-------");
+        if (antProperties.getAutoPullTurn()) {
+            AntBlogDocRequestTO docRequestTO = new AntBlogDocRequestTO();
+            docRequestTO.setProjectPath("https://github.com/black-ant/blogDoc.git");
+            docRequestTO.setType("git");
+            getBlogByPath(docRequestTO);
+        }
     }
 
 }
