@@ -7,10 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.ResourceUtils;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLDecoder;
@@ -48,7 +46,7 @@ public class BlogFileUtils {
      * @throws FileNotFoundException
      */
     public static String getJarPath() throws FileNotFoundException {
-        return new File(ResourceUtils.getURL("classpath:").getPath()).getParentFile().getParentFile().getParent();
+        return new File(ResourceUtils.getURL("classpath:").getPath()).getParentFile().getParent();
     }
 
     /**

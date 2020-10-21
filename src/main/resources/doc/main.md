@@ -6,6 +6,8 @@
 
 ```
 > 该项目致力于提供Blog的 Server 服务
+
+> 描述切割 : DocInfoService
 ```
 
 
@@ -72,3 +74,8 @@ C- DocInfoService
 
 ## 三 . 项目操作记录
 
+## 附录 
+
+### 待完善
+
+https://www.jq22.com/jquery-info3674

@@ -6,6 +6,7 @@ import com.gang.blog.server.entity.AntBlogContent;
 import com.gang.blog.server.entity.AntBlogType;
 import com.gang.blog.server.to.AntBlogDocRequestTO;
 import com.gang.blog.server.to.AntBlogDocTO;
+import com.gang.blog.server.to.AntDocBuildTO;
 import com.gang.blog.server.utils.BlogFileUtils;
 import com.gang.common.lib.utils.FileUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -34,6 +35,9 @@ public abstract class BasePullService {
     @Autowired
     protected AntBlogTypeServiceImpl blogTypeService;
 
+    @Autowired
+    private DocInfoService docInfoService;
+
     public abstract String pull(AntBlogDocRequestTO docRequestTO);
 
     /**
@@ -45,6 +49,12 @@ public abstract class BasePullService {
      */
     public Boolean pullLogic(String filePath, AntBlogDocRequestTO docRequestTO) {
 
+        logger.info("------> build Doc <-------");
+        AntDocBuildTO buildTO = new AntDocBuildTO();
+        buildTO.setFilePath(filePath);
+        buildTO.setFindChild(Boolean.TRUE);
+        docInfoService.buildDocInfo(buildTO);
+
         logger.info("------> pullLogic :{} <-------", filePath);
 
         // Get folder Map Suffix
@@ -54,7 +64,8 @@ public abstract class BasePullService {
             File settingFile = files.get(docRequestTO.getSettingFile());
 
             String config = FileUtil.isEmpty(settingFile) ? "" : FileUtil.readString(settingFile, "UTF-8");
-            AntBlogDocTO antBlogDocTO = StringUtils.isNotEmpty(config) ? JSONObject.parseObject(config, AntBlogDocTO.class) : null;
+            AntBlogDocTO antBlogDocTO = StringUtils.isNotEmpty(config) ? JSONObject.parseObject(config,
+                    AntBlogDocTO.class) : null;
 
             // Get files
             files.keySet().forEach(item -> {
@@ -69,7 +80,8 @@ public abstract class BasePullService {
                     } else {
 
                         if (antBlogDocTO != null && antBlogDocTO.getItemMap() != null) {
-                            AntBlogDocTO blogDocTOChild = antBlogDocTO.getItemMap().get(BlogFileUtils.getFileName(fileItem.getName()));
+                            AntBlogDocTO blogDocTOChild =
+                                    antBlogDocTO.getItemMap().get(BlogFileUtils.getFileName(fileItem.getName()));
                             if (blogDocTOChild != null) {
                                 blogDocTOChild.setParentInfo(antBlogDocTO);
                                 blogDocTOChild.setCode(BlogFileUtils.getFileName(fileItem.getName()));
@@ -140,7 +152,8 @@ public abstract class BasePullService {
      * @return
      */
     public AntBlogType getOrCreate(AntBlogDocTO antBlogDocTO) {
-        String code = StringUtils.isEmpty(antBlogDocTO.getParentInfo().getCode()) ? "COMMON" : antBlogDocTO.getParentInfo().getCode();
+        String code = StringUtils.isEmpty(antBlogDocTO.getParentInfo().getCode()) ? "COMMON" :
+                antBlogDocTO.getParentInfo().getCode();
 
         AntBlogType blogType = blogTypeService.getByCode(code);
         if (blogType == null) {

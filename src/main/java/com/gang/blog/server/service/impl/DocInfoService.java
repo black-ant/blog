@@ -121,7 +121,7 @@ public class DocInfoService {
         // 起始位置
         Integer descStart = index > 0 ? index : 0;
         // 结束位置
-        Integer descEnd = docContent.length() > 500 ? 500 : docContent.length();
+        Integer descEnd = docContent.length() > 240 ? 240 : docContent.length();
         String descContetn = docContent.substring(descStart, descEnd);
         descContetn = descContetn.replaceAll("\\r\\n", " ");
         descContetn = descContetn.replaceAll("[TOC]", "");
