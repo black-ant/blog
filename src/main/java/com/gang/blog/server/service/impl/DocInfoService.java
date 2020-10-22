@@ -1,11 +1,9 @@
 package com.gang.blog.server.service.impl;
 
 import cn.hutool.core.io.FileUtil;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.gang.blog.server.to.AntDocBuildTO;
 import com.gang.common.lib.utils.FileUtils;
-import io.swagger.models.auth.In;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -121,7 +119,7 @@ public class DocInfoService {
         // 起始位置
         Integer descStart = index > 0 ? index : 0;
         // 结束位置
-        Integer descEnd = docContent.length() > 240 ? 240 : docContent.length();
+        Integer descEnd = docContent.length() > 500 ? 500 : docContent.length();
         String descContetn = docContent.substring(descStart, descEnd);
         descContetn = descContetn.replaceAll("\\r\\n", " ");
         descContetn = descContetn.replaceAll("[TOC]", "");
