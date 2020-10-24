@@ -4,11 +4,14 @@ package com.gang.blog.server.controller;
 import com.gang.blog.server.entity.AntBlogContent;
 import com.gang.blog.server.entity.AntBlogTemplate;
 import com.gang.blog.server.service.impl.AntBlogContentServiceImpl;
+import com.gang.blog.server.service.impl.AntBlogSettingServiceImpl;
 import com.gang.blog.server.service.impl.AntBlogTemplateServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.PostConstruct;
 
 /**
  * <p>
@@ -25,13 +28,16 @@ public class AntBlogTemplateController extends AbstractControllerView<AntBlogTem
     @Autowired
     private AntBlogTemplateServiceImpl templateService;
 
-    @Override
-    public String getMapping() {
-        return null;
-    }
 
+    @PostConstruct
     public void setService() {
         super.service = templateService;
     }
+
+    @Override
+    public String getMapping() {
+        return "template";
+    }
+
 }
 

@@ -216,7 +216,7 @@
 			}
 		}
 	});
-
+	
 	/*----------------------------------------*/
 	/*  4.  Bar Chart Multi axis
 	/*----------------------------------------*/
@@ -267,7 +267,7 @@
 					'rgba(153, 102, 255, 1)',
 					'rgba(255, 159, 64, 1)'
 				],
-
+				
             }]
 		},
 		options: {
@@ -277,7 +277,7 @@
 				text:"Bar Chart Multi Axis"
 			},
 			tooltips: {
-				mode: 'index.vue',
+				mode: 'index',
 				intersect: true
 			},
 			scales: {
@@ -298,11 +298,11 @@
 			}
 		}
 	});
-
+	
 	/*----------------------------------------*/
 	/*  5.  Bar Chart Stacked
 	/*----------------------------------------*/
-
+	
 	var ctx = document.getElementById("barchart5");
 	var barchart5 = new Chart(ctx, {
 		type: 'bar',
@@ -316,12 +316,12 @@
                 label: 'Dataset 2',
                 backgroundColor: '#03a9f4',
 				data: [-10, 15, -7, 7, -2, 4, 9]
-
+				
             }, {
                 label: 'Dataset 3',
                backgroundColor: '#FFC13B',
 			   data: [15, -18, 3, 6, 5, -3, 7]
-
+				
             }]
 		},
 		options: {
@@ -330,7 +330,7 @@
 				text:"Bar Chart Stacked"
 			},
 			tooltips: {
-				mode: 'index.vue',
+				mode: 'index',
 				intersect: false
 			},
 			responsive: true,
@@ -356,8 +356,8 @@
 			}
 		}
 	});
-
-
-
-
-})(jQuery);
+	
+	
+		
+		
+})(jQuery); 

@@ -1,6 +1,6 @@
 (function ($) {
  "use strict";
-
+ 
 	 /*----------------------------------------*/
 	/*  1.  Basic Line Chart
 	/*----------------------------------------*/
@@ -21,7 +21,7 @@
                 backgroundColor: '#03a9f4',
 				borderColor: '#03a9f4',
 				data: [-12, -3, -4, 6, 3, 7, 10]
-
+				
 		}]
 		},
 		options: {
@@ -31,7 +31,7 @@
 				text:'Basic Line Chart'
 			},
 			tooltips: {
-				mode: 'index.vue',
+				mode: 'index',
 				intersect: false,
 			},
 			hover: {
@@ -68,7 +68,7 @@
 			}
 		}
 	});
-
+	
 	 /*----------------------------------------*/
 	/*  2.  Line Chart Multi axis
 	/*----------------------------------------*/
@@ -91,12 +91,12 @@
 				borderColor: '#03a9f4',
 				data: [-12, -3, -4, 6, 3, 7, -20],
 				yAxisID: "y-axis-2"
-
+				
 		}]
 		},
 		options: {
 			responsive: true,
-			hoverMode: 'index.vue',
+			hoverMode: 'index',
 			stacked: false,
 			title:{
 				display: true,
@@ -109,7 +109,7 @@
 					position: "left",
 					id: "y-axis-1",
 				}, {
-					type: "linear",
+					type: "linear", 
 					display: true,
 					position: "right",
 					id: "y-axis-2",
@@ -120,7 +120,7 @@
 			}
 		}
 	});
-
+	
 	 /*----------------------------------------*/
 	/*  3.  Line Chart stepped
 	/*----------------------------------------*/
@@ -165,11 +165,11 @@
 			}
 		}
 	});
-
+	
 	/*----------------------------------------*/
 	/*  4.  Line Chart Interpolation
 	/*----------------------------------------*/
-
+	
 	var ctx = document.getElementById("linechartinterpolation");
 	var linechartinterpolation = new Chart(ctx, {
 		type: 'line',
@@ -188,7 +188,7 @@
                 backgroundColor: '#03a9f4',
 				borderColor: '#03a9f4',
 				data: [-100, 200, 12, -200, 12, 200, 8, -200, 9, 200, -200, -12, -200]
-
+				
 		}, {
                 label: "Linear interpolation",
 				fill: false,
@@ -196,7 +196,7 @@
 				borderColor: '#ff0000',
 				data: [-8, -9, -10, -11, 0, 0, 0, 12, 10, 8, 9, 7, 12],
 				lineTension: 0
-
+				
 		}]
 		},
 		options: {
@@ -206,7 +206,7 @@
 				text:'Line Chart interpolation'
 			},
 			tooltips: {
-				mode: 'index.vue'
+				mode: 'index'
 			},
 			scales: {
 				xAxes: [{
@@ -230,12 +230,12 @@
 			}
 		}
 	});
-
-
+	
+	
 	/*----------------------------------------*/
 	/*  5.  Line Chart styles
 	/*----------------------------------------*/
-
+	
 	var ctx = document.getElementById("linechartstyles");
 	var linechartstyles = new Chart(ctx, {
 		type: 'line',
@@ -254,14 +254,14 @@
 				borderColor: '#03a9f4',
 				borderDash: [5, 5],
 				data: [-100, 200, 12, -200, 12, 200, 8]
-
+				
 		}, {
                 label: "Filled",
 				fill: true,
                 backgroundColor: '#ff0000',
 				borderColor: '#ff0000',
 				data: [-200, -9, 200, -11, 0, -200, 0]
-
+				
 		}]
 		},
 		options: {
@@ -271,7 +271,7 @@
 				text:'Line Chart Style'
 			},
 			tooltips: {
-				mode: 'index.vue',
+				mode: 'index',
 				intersect: false,
 			},
 			hover: {
@@ -303,7 +303,7 @@
 	/*----------------------------------------*/
 	/*  6.  Line Chart point circle
 	/*----------------------------------------*/
-
+	
 	var ctx = document.getElementById("linechartpointcircle");
 	var linechartpointcircle = new Chart(ctx, {
 		type: 'line',
@@ -317,7 +317,7 @@
 				fill: false,
 				pointRadius: 4,
 				pointHoverRadius: 10,
-				showLine: false
+				showLine: false 
 			}]
 		},
 		options: {
@@ -359,7 +359,7 @@
 	/*----------------------------------------*/
 	/*  6.  Line Chart point rectRot
 	/*----------------------------------------*/
-
+	
 	var ctx = document.getElementById("linechartpointrectRot");
 	var linechartpointrectRot = new Chart(ctx, {
 		type: 'line',
@@ -373,7 +373,7 @@
 				fill: false,
 				pointRadius: 6,
 				pointHoverRadius: 10,
-				showLine: false
+				showLine: false 
 			}]
 		},
 		options: {
@@ -415,7 +415,7 @@
 	/*----------------------------------------*/
 	/*  6.  Line Chart point cross
 	/*----------------------------------------*/
-
+	
 	var ctx = document.getElementById("linechartpointcross");
 	var linechartpointcross = new Chart(ctx, {
 		type: 'line',
@@ -429,7 +429,7 @@
 				fill: false,
 				pointRadius: 6,
 				pointHoverRadius: 10,
-				showLine: false
+				showLine: false 
 			}]
 		},
 		options: {
@@ -468,7 +468,7 @@
 			}
 		}
 	});
-
-
-
-})(jQuery);
+	
+	
+		
+})(jQuery); 

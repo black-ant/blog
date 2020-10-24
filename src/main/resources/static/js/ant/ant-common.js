@@ -1,10 +1,10 @@
-var baseUrl = "http://127.0.0.1:8089/";
+var baseUrl = "http://127.0.0.1:8086/";
 var antAjax = {
     post: function (url, data, successFun) {
         $.ajax({
             type: "POST",
             dataType: "json",
-            url: url,
+            url: baseUrl + url,
             contentType: "application/json",
             data: JSON.stringify(data),
             success: successFun

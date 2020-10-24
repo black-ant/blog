@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @Classname BaseService
@@ -18,16 +20,6 @@ public class BaseService<T extends IService, D extends BaseEntity> {
 
     protected IService service;
 
-    @GetMapping("get/{key}")
-    public BlogResponseModel getOne(@PathVariable("key") String key) {
-        return BlogResponseModel.commonResponse(service.getById(key));
-    }
-
-    @GetMapping("list")
-    public BlogResponseModel getAll() {
-        return BlogResponseModel.commonResponse(service.list());
-    }
-
     @GetMapping("delete")
     public BlogResponseModel delete(@PathVariable("key") String key) {
         service.removeById(key);
@@ -37,6 +29,11 @@ public class BaseService<T extends IService, D extends BaseEntity> {
     @PostMapping("insert")
     public BlogResponseModel insert(@ModelAttribute("entity") D entity) {
         return BlogResponseModel.commonResponse(service.save(entity));
+    }
+
+    @PostMapping("insertOrUpdate")
+    public BlogResponseModel insertOrUpdate(@RequestBody D entity) {
+        return BlogResponseModel.commonResponse(service.saveOrUpdate(entity));
     }
 
     @PostMapping("update")

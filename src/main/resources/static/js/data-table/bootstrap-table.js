@@ -1637,7 +1637,7 @@
         if (item._data && !$.isEmptyObject(item._data)) {
             $.each(item._data, function(k, v) {
                 // ignore data-index
-                if (k === 'index.vue') {
+                if (k === 'index') {
                     return;
                 }
                 data_ += sprintf(' data-%s="%s"', k, v);
@@ -1733,7 +1733,7 @@
             if (item['_' + field + '_data'] && !$.isEmptyObject(item['_' + field + '_data'])) {
                 $.each(item['_' + field + '_data'], function(k, v) {
                     // ignore data-index
-                    if (k === 'index.vue') {
+                    if (k === 'index') {
                         return;
                     }
                     data_ += sprintf(' data-%s="%s"', k, v);
@@ -1844,7 +1844,7 @@
         this.$body.find('> tr[data-index] > td').off('click dblclick').on('click dblclick', function (e) {
             var $td = $(this),
                 $tr = $td.parent(),
-                item = that.data[$tr.data('index.vue')],
+                item = that.data[$tr.data('index')],
                 index = $td[0].cellIndex,
                 fields = that.getVisibleFields(),
                 field = fields[that.options.detailView && !that.options.cardView ? index - 1 : index],
@@ -1870,7 +1870,7 @@
         this.$body.find('> tr[data-index] > td > .detail-icon').off('click').on('click', function () {
             var $this = $(this),
                 $tr = $this.parent().parent(),
-                index = $tr.data('index.vue'),
+                index = $tr.data('index'),
                 row = data[index]; // Fix #980 Detail view, when searching, returns wrong row
 
             // remove and update
@@ -1898,7 +1898,7 @@
 
             var $this = $(this),
                 checked = $this.prop('checked'),
-                row = that.data[$this.data('index.vue')];
+                row = that.data[$this.data('index')];
 
             if (that.options.maintainSelected && $(this).is(':radio')) {
                 $.each(that.options.data, function (i, row) {
@@ -1910,7 +1910,7 @@
 
             if (that.options.singleSelect) {
                 that.$selectItem.not(this).each(function () {
-                    that.data[$(this).data('index.vue')][that.header.stateField] = false;
+                    that.data[$(this).data('index')][that.header.stateField] = false;
                 });
                 that.$selectItem.filter(':checked').not(this).prop('checked', false);
             }
@@ -1945,7 +1945,7 @@
                         func = events[key];
 
                     $td.find(el).off(name).on(name, function (e) {
-                        var index = $tr.data('index.vue'),
+                        var index = $tr.data('index'),
                             row = that.data[index],
                             value = row[field];
 
@@ -2077,7 +2077,7 @@
         var that = this;
 
         this.$selectItem.each(function () {
-            that.data[$(this).data('index.vue')][that.header.stateField] = $(this).prop('checked');
+            that.data[$(this).data('index')][that.header.stateField] = $(this).prop('checked');
         });
     };
 
@@ -2535,7 +2535,7 @@
     };
 
     BootstrapTable.prototype.insertRow = function (params) {
-        if (!params.hasOwnProperty('index.vue') || !params.hasOwnProperty('row')) {
+        if (!params.hasOwnProperty('index') || !params.hasOwnProperty('row')) {
             return;
         }
         this.data.splice(params.index, 0, params.row);
@@ -2550,7 +2550,7 @@
         var allParams = $.isArray(params) ? params : [ params ];
 
         $.each(allParams, function(i, params) {
-            if (!params.hasOwnProperty('index.vue') || !params.hasOwnProperty('row')) {
+            if (!params.hasOwnProperty('index') || !params.hasOwnProperty('row')) {
                 return;
             }
             $.extend(that.options.data[params.index], params.row);
@@ -2577,7 +2577,7 @@
     BootstrapTable.prototype.toggleRow = function (params, visible) {
         var row, index;
 
-        if (params.hasOwnProperty('index.vue')) {
+        if (params.hasOwnProperty('index')) {
             row = this.getData()[params.index];
         } else if (params.hasOwnProperty('uniqueId')) {
             row = this.getRowByUniqueId(params.uniqueId);
@@ -2640,7 +2640,7 @@
     };
 
     BootstrapTable.prototype.updateCell = function (params) {
-        if (!params.hasOwnProperty('index.vue') ||
+        if (!params.hasOwnProperty('index') ||
             !params.hasOwnProperty('field') ||
             !params.hasOwnProperty('value')) {
             return;
@@ -2974,7 +2974,7 @@
         } else {
             var trs = this.$body.children();
             for (var i = 0; i < trs.length; i++) {
-                this.expandRow_(true, $(trs[i]).data("index.vue"));
+                this.expandRow_(true, $(trs[i]).data("index"));
             }
         }
     };
@@ -2985,7 +2985,7 @@
         } else {
             var trs = this.$body.children();
             for (var i = 0; i < trs.length; i++) {
-                this.expandRow_(false, $(trs[i]).data("index.vue"));
+                this.expandRow_(false, $(trs[i]).data("index"));
             }
         }
     };

@@ -24,7 +24,7 @@ public class AntBlogUserController extends AbstractControllerView<AntBlogUserSer
 
     @Override
     public String getMapping() {
-        return null;
+        return "user";
     }
 
     @Autowired

@@ -1,7 +1,5 @@
 <!doctype html>
 <html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
-
-
 <head th:replace="common/commonHead :: common_header(~{::title},~{::link})">
     <title>Blog Content</title>
 </head>
@@ -62,26 +60,30 @@
                                         <thead>
                                         <tr>
                                             <th data-field="state" data-checkbox="true"></th>
-                                            <th data-field="id">主键</th>
-                                            <th data-field="groupCode" data-editable="true">组代码</th>
-                                            <th data-field="groupName" data-editable="true">组名称</th>
-                                            <th data-field="groupRole" data-editable="true">组权限</th>
-                                            <th data-field="groupDesc" data-editable="true">组描述</th>
-                                            <th data-field="groupStatus">组状态</th>
+                                            <th data-field="settingCode" data-editable="true">配置Code</th>
+                                            <th data-field="settingName" data-editable="true">属性名</th>
+                                            <th data-field="settingValue" data-editable="true">属性值</th>
+                                            <th data-field="settingType" data-editable="true">属性类型</th>
+                                            <th data-field="settingStatus">属性状态</th>
                                             <th data-field="action">Action</th>
                                         </tr>
 
                                         </thead>
                                         <tbody>
-                                        <tr th:each="data:${datalist}">
+                                        <tr th:each="data:${datalist}" th:data-id="${data.id}">
                                             <td></td>
-                                            <td th:text="${data.id}"></td>
-                                            <td th:text="${data.groupCode}"></td>
-                                            <td th:text="${data.groupName}"></td>
-                                            <td th:text="${data.groupRole}"></td>
-                                            <td th:text="${data.groupDesc}"></td>
-                                            <td th:text="${data.groupStatus}"></td>
-                                            <td class="datatable-ct"><i class="fa fa-check"></i>
+                                            <td data-field="settingCode" th:text="${data.settingCode}"></td>
+                                            <td data-field="settingName" th:text="${data.settingName}"></td>
+                                            <td data-field="settingValue" th:text="${data.settingValue}"></td>
+                                            <td data-field="settingType" th:text="${data.settingType}"></td>
+                                            <td data-field="settingStatus" th:text="${data.settingStatus}"></td>
+                                            <td class="datatable-ct">
+                                                <button type="button" class="btn btn-primary"
+                                                        th:onclick="save('[(${data.id})]')">保存
+                                                </button>
+                                                <button type="button" class="btn btn-primary"
+                                                        th:onclick="deleteOne('[(${data.id})]')">删除
+                                                </button>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -101,6 +103,17 @@
 
 <!-- Chat Box End-->
 <div th:replace="common/commonJS::common_js(~{::script})"></div>
+
+<!-- mCustomScrollbar JS
+    ============================================ -->
+<script th:src="@{/jjs/jquery.mCustomScrollbar.concat.min.js}"></script>
+<!-- sticky JS
+    ============================================ -->
+<script th:src="@{/jjs/jquery.sticky.js}"></script>
+<!-- scrollUp JS
+    ============================================ -->
+<script th:src="@{/jjs/jquery.scrollUp.min.js}"></script>
+
 <!-- counterup JS
     ============================================ -->
 <script th:src="@{/js/counterup/jquery.counterup.min.js}"></script>
@@ -119,7 +132,28 @@
     ============================================ -->
 <script th:src="@{/js/main.js}"></script>
 
+<script>
+    function save(id) {
+        console.log("this is ok ");
+        var tdArray = $("[data-id=" + id + "]").children("td").toArray();
+        var saveObj = {"id": id};
+        for (var index in  tdArray) {
+            var item = tdArray[index];
+            if ($(item).attr("data-field")) {
+                saveObj[$(item).attr("data-field")] = $(item).text();
+            }
+        }
 
+        console.log(saveObj);
+        antAjax.post("setting/insertOrUpdate",saveObj,function () {
+            console.log("ok");
+        })
+    }
+
+    function deleteOne(id) {
+        console.log("this is ok ");
+    }
+</script>
 </body>
 
 </html>
