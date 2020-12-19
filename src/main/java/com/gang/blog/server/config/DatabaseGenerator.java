@@ -25,7 +25,7 @@
 //public class DatabaseGenerator {
 //
 //    private static String[] tableList = {
-//            "ant_blog_setting"
+//            "ant_blog_folder"
 //    };
 //
 //    private static String parentName = "com.gang.blog.server";
@@ -68,7 +68,7 @@
 //            public void initMap() {
 //                // to do nothing
 //            }
-//        };
+//        };SwaggerConfig
 //
 //        // 自定义输出配置
 //        List<FileOutConfig> focList = new ArrayList<>();

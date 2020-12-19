@@ -1,0 +1,64 @@
+var baseUrl = "http://127.0.0.1:8086/";
+var restApi = {
+    doPullGit: function () {
+        var body = {
+            "projectPath": "https://gitee.com/antblack/blog-doc.git",
+            "type": "git"
+        }
+        return restUtils.post(baseUrl + "pull/bypath", body);
+    },
+    doBuildDoc: function () {
+        var body ={
+            "filePath":"D:\\java\\workspace\\doc\\blogDoc",
+            "findChild":true
+        }
+        return restUtils.post(baseUrl + "docbuild", body);
+    },
+}
+
+var restUtils = {
+    get: function (url, param = {}, dataType = 'json') {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: baseUrl + url,
+                type: "GET",
+                data: param,
+                dataType: dataType,
+                async: true,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+                    xhr.setRequestHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS,DELETE,PUT");
+                },
+                success: function (result) {
+                    resolve(result)
+                },
+
+                error: function (result) {
+                    reject(result)
+                }
+            });
+        })
+    },
+    post: function (url, param = {}, dataType = 'json') {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: "post",
+                url: url,
+                contentType: "application/json;charset=UTF-8",
+                data: JSON.stringify(param),
+                dataType: dataType,
+                crossDomain: true,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+                    xhr.setRequestHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS,DELETE,PUT");
+                },
+                success: function (result) {
+                    resolve(result);
+                },
+                error: function (err) {
+                    reject(result);
+                }
+            });
+        })
+    }
+}

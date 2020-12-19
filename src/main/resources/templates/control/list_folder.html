@@ -1,0 +1,424 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:replace="common/commonHead :: common_header(~{::title},~{::link})">
+    <title>Blog Content</title>
+</head>
+<div th:replace="common/commonHead::common_header_tree"></div>
+
+<style>
+    body {
+        color: white;
+    }
+</style>
+
+<body class="darklayout">
+<!-- Header top area start-->
+<div class="wrapper-pro">
+
+
+    <div th:replace="common/commonLeft::common_left(~{::name})"></div>
+
+    <!-- Header top area start-->
+    <div class="content-inner-all">
+
+        <div th:replace="common/commonTop::common_top(~{::name})"></div>
+
+        <!-- Breadcome start-->
+        <div th:replace="common/commonAddr::common_address('App 类型')"></div>
+
+        <!-- Static Table Start -->
+        <div class="tree-viewer-area mg-b-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="sparkline9-list shadow-reset">
+                            <div class="sparkline9-hd">
+                                <div class="main-sparkline9-hd">
+                                    <h1>Tree Viewer Style 1</h1>
+                                    <div class="sparkline9-outline-icon">
+                                        <span class="sparkline9-collapse-link"><i class="fa fa-chevron-up"></i></span>
+                                        <span><i class="fa fa-wrench"></i></span>
+                                        <span class="sparkline9-collapse-close"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sparkline9-graph">
+                                <div class="adminpro-content res-tree-ov">
+                                    <div id="jstree1">
+                                        <ul>
+                                            <li class="jstree-open">Admin Template
+                                                <ul>
+                                                    <li>css
+                                                        <ul>
+                                                            <li>bootstrap.min.css
+                                                                <ul>
+                                                                    <li data-jstree='"type":"css"}'>bootstrap.min.css
+                                                                    </li>
+                                                                    <li data-jstree='"type":"css"}'>
+                                                                        font-awesome.min.css
+                                                                    </li>
+                                                                    <li data-jstree='"type":"css"}'>responsive.css</li>
+                                                                    <li data-jstree='"type":"css"}'>tree-viewer.css</li>
+                                                                </ul>
+                                                            </li>
+                                                            <li data-jstree='"type":"css"}'>font-awesome.min.css</li>
+                                                            <li data-jstree='"type":"css"}'>responsive.css</li>
+                                                            <li data-jstree='"type":"css"}'>tree-viewer.css</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>sounds
+                                                        <ul>
+                                                            <li data-jstree='"type":"ogg"}'>sound1.ogg</li>
+                                                            <li data-jstree='"type":"ogg"}'>sound2.ogg</li>
+                                                            <li data-jstree='"type":"ogg"}'>sound3.ogg</li>
+                                                            <li data-jstree='"type":"ogg"}'>sound4.ogg</li>
+                                                            <li data-jstree='"type":"ogg"}'>sound5.ogg</li>
+                                                            <li data-jstree='"type":"ogg"}'>sound6.ogg</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>fonts
+                                                        <ul>
+                                                            <li data-jstree='"type":"ttf"}'>adminpro-icon.ttf</li>
+                                                            <li data-jstree='"type":"woff"}'>adminpro-icon.woff</li>
+                                                            <li data-jstree='"type":"otf"}'>FontAwesome.otf</li>
+                                                            <li data-jstree='"type":"ttf"}'>fontawesome-webfont.ttf</li>
+                                                            <li data-jstree='"type":"woff"}'>fontawesome-webfont.woff
+                                                            </li>
+                                                            <li data-jstree='"type":"woff"}'>
+                                                                glyphicons
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="jstree-open">img
+                                                        <ul>
+                                                            <li data-jstree='"type":"png"}'>logo.png</li>
+                                                            <li data-jstree='"type":"ico"}'>favicon.ico</li>
+                                                            <li class="text-navy" data-jstree='"type":"img"}'>
+                                                                notification.png
+                                                            </li>
+                                                            <li class="text-navy" data-jstree='"type":"img"}'>
+                                                                message.png
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="jstree-open">js
+                                                        <ul>
+                                                            <li data-jstree='"type":"js"}'>bootstrap.min.js</li>
+                                                            <li data-jstree='"type":"js"}'>jquery-ui.min.js</li>
+                                                            <li data-jstree='"type":"js"}'>jquery.meanmenu.js</li>
+                                                            <li data-jstree='"type":"js"}'>jquery-1.11.3.min.js</li>
+                                                            <li data-jstree='"type":"js"}'>modernizr-2.8.3.min.js</li>
+                                                            <li class="text-navy" data-jstree='"type":"js"}'>
+                                                                jquery.js
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li data-jstree='"type":"html"}'> dashboard.html</li>
+                                                    <li data-jstree='"type":"html"}'> dashboard-2.html</li>
+                                                    <li data-jstree='"type":"html"}'> analytics.html</li>
+                                                    <li data-jstree='"type":"html"}'> widgets.html</li>
+                                                    <li data-jstree='"type":"html"}'> tree-view.html</li>
+                                                    <li data-jstree='"type":"html"}'> tinymc.html</li>
+                                                    <li class="text-navy" data-jstree='"type":"html"}'> sparkline.html
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div id="inbox"
+                             class="tab-pane fade in animated zoomInDown custom-inbox-message shadow-reset active">
+                            <div class="mail-title inbox-bt-mg">
+                                <h2>Inbox</h2>
+                                <div class="view-mail-action view-mail-ov-d-n">
+                                    <a href="#"><i class="fa fa-reply"></i> Reply</a>
+                                    <a class="compose-draft-bt" href="javascript:window.print()"><i
+                                            class="fa fa-print"></i> Print</a>
+                                    <a class="compose-discard-bt" href="#"><i class="fa fa-trash-o"></i> Trash</a>
+                                </div>
+                            </div>
+                            <div class="datatable-dashv1-list custom-datatable-overright">
+                                <div id="toolbar1">
+                                    <select class="form-control">
+                                        <option value="">Export Basic</option>
+                                        <option value="all">Export All</option>
+                                        <option value="selected">Export Selected</option>
+                                    </select>
+                                </div>
+                                <table id="table" data-toggle="table" data-pagination="true" data-search="true"
+                                       data-show-columns="true" data-show-pagination-switch="true"
+                                       data-show-refresh="true" data-key-events="true" data-show-toggle="true"
+                                       data-resizable="true" data-cookie="true" data-cookie-id-table="saveId"
+                                       data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar1">
+                                    <thead>
+                                    <tr>
+                                        <th data-field="state" data-checkbox="true"></th>
+                                        <th data-field="id">ID</th>
+                                        <th data-field="name">Name</th>
+                                        <th data-field="email">Title</th>
+                                        <th data-field="phone">Messages</th>
+                                        <th data-field="company">File</th>
+                                        <th data-field="complete">Date</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="new-email">
+                                        <td></td>
+                                        <td>1</td>
+                                        <td>Google</td>
+                                        <td>Account Security Alert</td>
+                                        <td>Your Google Account was just signed...</td>
+                                        <td><i class="fa fa-close"></i>
+                                        </td>
+                                        <td>10.00 pm</td>
+                                    </tr>
+                                    <tr class="new-email">
+                                        <td></td>
+                                        <td>2</td>
+                                        <td>Twitter</td>
+                                        <td>login to Twitter</td>
+                                        <td>Bring Light to Your Photos...</td>
+                                        <td><i class="fa fa-file" aria-hidden="true"></i>
+                                        </td>
+                                        <td>11.00 pm</td>
+                                    </tr>
+                                    <tr class="new-email">
+                                        <td></td>
+                                        <td>3</td>
+                                        <td>LinkedIn</td>
+                                        <td>Career Interests</td>
+                                        <td>We will share your career interests...</td>
+                                        <td><i class="fa fa-file" aria-hidden="true"></i>
+                                        </td>
+                                        <td>11.30 pm</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>4</td>
+                                        <td>Reddit</td>
+                                        <td>Verify Email</td>
+                                        <td>Visit this link to verify your email...</td>
+                                        <td><i class="fa fa-close"></i>
+                                        </td>
+                                        <td>1 Day ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>5</td>
+                                        <td>Google+</td>
+                                        <td>Welcome Google+</td>
+                                        <td>Explore the topics you love</td>
+                                        <td><i class="fa fa-file" aria-hidden="true"></i>
+                                        </td>
+                                        <td>2 Day ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>6</td>
+                                        <td>Envato</td>
+                                        <td>Envato Market</td>
+                                        <td>you have an Envato Account...</td>
+                                        <td><i class="fa fa-file" aria-hidden="true"></i>
+                                        </td>
+                                        <td>3 Days ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>7</td>
+                                        <td>Support</td>
+                                        <td>Hello SRTtheme</td>
+                                        <td>Thank you for submitting your item...</td>
+                                        <td><i class="fa fa-close"></i>
+                                        </td>
+                                        <td>4 Days ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>8</td>
+                                        <td>James</td>
+                                        <td>Hello Mamun</td>
+                                        <td>A new bounty has been added for...</td>
+                                        <td><i class="fa fa-file" aria-hidden="true"></i>
+                                        </td>
+                                        <td>5 Days ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>9</td>
+                                        <td>Mamunur</td>
+                                        <td>Congrats!</td>
+                                        <td>Your storefront has been activated!...</td>
+                                        <td><i class="fa fa-file" aria-hidden="true"></i>
+                                        </td>
+                                        <td>6 Days ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>10</td>
+                                        <td>SRTtheme</td>
+                                        <td>Activate SRTtheme</td>
+                                        <td>Please click the button below to...</td>
+                                        <td><i class="fa fa-file" aria-hidden="true"></i>
+                                        </td>
+                                        <td>7 Days ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>11</td>
+                                        <td>AdWords</td>
+                                        <td>Welcome AdWords</td>
+                                        <td>Potential customers are waiting for...</td>
+                                        <td><i class="fa fa-file" aria-hidden="true"></i>
+                                        </td>
+                                        <td>8 Days ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>12</td>
+                                        <td>WordPress</td>
+                                        <td>Password Reset</td>
+                                        <td>Someone recently requested that the...</td>
+                                        <td><i class="fa fa-file" aria-hidden="true"></i>
+                                        </td>
+                                        <td>9 Days ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>13</td>
+                                        <td>LinkedIn</td>
+                                        <td>MD Mamunur</td>
+                                        <td>People found you in search this week...</td>
+                                        <td><i class="fa fa-file" aria-hidden="true"></i>
+                                        </td>
+                                        <td>15 Days ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>14</td>
+                                        <td>Shamima</td>
+                                        <td>Hi MD Mamunur</td>
+                                        <td>please add me to your LinkedIn...</td>
+                                        <td><i class="fa fa-file" aria-hidden="true"></i>
+                                        </td>
+                                        <td>17 Days ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>15</td>
+                                        <td>Instagram</td>
+                                        <td>Confirm Instagram</td>
+                                        <td>Confirm your email address for...</td>
+                                        <td><i class="fa fa-close"></i>
+                                        </td>
+                                        <td>1 month ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>16</td>
+                                        <td>Mojo</td>
+                                        <td>Mojo Marketplace</td>
+                                        <td>Did you forget your shopping cart?...</td>
+                                        <td><i class="fa fa-file" aria-hidden="true"></i>
+                                        </td>
+                                        <td>2 month ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>17</td>
+                                        <td>Drom Fly</td>
+                                        <td>Dreams</td>
+                                        <td>Setup the Studio of Your Dreams...</td>
+                                        <td><i class="fa fa-file" aria-hidden="true"></i>
+                                        </td>
+                                        <td>3 month ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>18</td>
+                                        <td>Amin Khan</td>
+                                        <td>Photos</td>
+                                        <td>Bring Light to Your Photos</td>
+                                        <td><i class="fa fa-file" aria-hidden="true"></i>
+                                        </td>
+                                        <td>4 month ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>19</td>
+                                        <td>Illustration</td>
+                                        <td>Collection</td>
+                                        <td>Collect a Charming Illustration...</td>
+                                        <td><i class="fa fa-file" aria-hidden="true"></i>
+                                        </td>
+                                        <td>5 month ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>20</td>
+                                        <td>Jay Roy</td>
+                                        <td>Title</td>
+                                        <td>Set a Spark to Your Titles...</td>
+                                        <td><i class="fa fa-close"></i>
+                                        </td>
+                                        <td>6 month ago</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>21</td>
+                                        <td>Fox Eye</td>
+                                        <td>Logo</td>
+                                        <td>Open Your Mind or Your Logo</td>
+                                        <td><i class="fa fa-file" aria-hidden="true"></i>
+                                        </td>
+                                        <td>1 Year</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Breadcome start-->
+<div th:replace="common/commonFooter::common_footer"></div>
+
+<!-- Chat Box End-->
+<div th:replace="common/commonJS::common_js(~{::script})"></div>
+<!-- counterup JS
+    ============================================ -->
+<script th:src="@{/js/counterup/jquery.counterup.min.js}"></script>
+<script th:src="@{/js/counterup/waypoints.min.js}"></script>
+<!-- peity JS
+    ============================================ -->
+<script th:src="@{/js/peity/jquery.peity.min.js}"></script>
+<script th:src="@{/js/peity/peity-active.js}"></script>
+
+<!-- Tree Viewer JS
+============================================ -->
+<script th:src="@{/js/tree-line/jstree.min.js}"></script>
+<script th:src="@{/js/tree-line/jstree.active.js}"></script>
+
+<!-- sparkline JS
+    ============================================ -->
+<script th:src="@{/js/sparkline/jquery.sparkline.min.js}"></script>
+<script th:src="@{/js/sparkline/sparkline-active.js}"></script>
+
+<div th:replace="common/commonJS::common_js_table(~{::script})"></div>
+<!-- main JS
+    ============================================ -->
+<script th:src="@{/js/main.js}"></script>
+
+
+</body>
+
+</html>

@@ -67,7 +67,4 @@ public abstract class AbstractControllerView<T extends IService, D extends BaseE
     public void beforeBuild(D entity) {
 
     }
-
-    //    public abstract void setService(IService service);
-
 }

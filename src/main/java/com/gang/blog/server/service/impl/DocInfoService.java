@@ -53,7 +53,6 @@ public class DocInfoService {
                     if (!"BLOG".equals(itemKey)) {
                         JSONObject item = new JSONObject();
                         item.put("name", itemKey);
-                        item.put("desc", getDesc(fileItem));
                         item.put("classType", "Doc");
                         item.put("status", "update");
                         itemArray.put(itemKey, item);
@@ -106,26 +105,6 @@ public class DocInfoService {
         FileUtil.writeString(value, path + "/BLOG.md", "UTF-8");
     }
 
-    /**
-     * 获取文档描述
-     *
-     * @param file
-     * @return
-     */
-    public String getDesc(File file) {
-        String docContent = FileUtils.getFileContent(file);
-        Integer index = StringUtils.indexOf(docContent, "\n|\r");
-
-        // 起始位置
-        Integer descStart = index > 0 ? index : 0;
-        // 结束位置
-        Integer descEnd = docContent.length() > 500 ? 500 : docContent.length();
-        String descContetn = docContent.substring(descStart, descEnd);
-        descContetn = descContetn.replaceAll("\\r\\n", " ");
-        descContetn = descContetn.replaceAll("[TOC]", "");
-        //        logger.info("------> file :{} , {}-{} <-------", file.getPath(), descStart, descEnd);
-        return descContetn;
-    }
 
 
     /**

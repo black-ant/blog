@@ -23,13 +23,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a th:href="@{/folder/list}"><i class="fa big-icon fa-home"></i> <span
+                                class="mini-dn">文件</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a th:href="@{/type/list}"><i class="fa big-icon fa-home"></i> <span
                                 class="mini-dn">类型管理</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a th:href="@{/template/list}"><i class="fa big-icon fa-home"></i> <span
-                                class="mini-dn">模板管理</span>
+                        <a th:href="@{/operation}"><i class="fa big-icon fa-home"></i> <span
+                                class="mini-dn">博客运维</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -42,23 +47,15 @@
                                 class="mini-dn">标签管理</span>
                         </a>
                     </li>
-                    <li class="nav-item"><a th:href="@{/content/list}" data-toggle="dropdown" role="button"
-                                            aria-expanded="false"
-                                            class="nav-link dropdown-toggle"><i class="fa big-icon fa-files-o"></i>
-                        <span class="mini-dn">内容管理</span> <span class="indicator-right-menu mini-dn"><i
-                                class="fa indicator-mn fa-angle-left"></i></span></a>
-                        <div role="menu" class="dropdown-menu left-menu-dropdown pages-left-menu-std animated flipInX">
-                            <a href="login.html" class="dropdown-item">内容目录</a>
-                            <a href="register.html" class="dropdown-item">添加文档</a>
-                        </div>
+                    <li class="nav-item">
+                        <a th:href="@{/content/list}"><i class="fa big-icon fa-home"></i> <span
+                                class="mini-dn">文章管理</span>
+                        </a>
                     </li>
-                    <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
-                                            class="nav-link dropdown-toggle"><i class="fa big-icon fa-files-o"></i>
-                        <span class="mini-dn">操作</span> <span class="indicator-right-menu mini-dn"><i
-                                class="fa indicator-mn fa-angle-left"></i></span></a>
-                        <div role="menu" class="dropdown-menu left-menu-dropdown pages-left-menu-std animated flipInX">
-                            <a href="login.html" class="dropdown-item">退出</a>
-                        </div>
+                    <li class="nav-item">
+                        <a th:href="@{/content/list}"><i class="fa big-icon fa-home"></i> <span
+                                class="mini-dn">退出</span>
+                        </a>
                     </li>
                 </ul>
             </div>

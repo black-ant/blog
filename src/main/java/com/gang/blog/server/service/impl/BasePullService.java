@@ -53,7 +53,7 @@ public abstract class BasePullService {
         AntDocBuildTO buildTO = new AntDocBuildTO();
         buildTO.setFilePath(filePath);
         buildTO.setFindChild(Boolean.TRUE);
-        docInfoService.buildDocInfo(buildTO);
+//        docInfoService.buildDocInfo(buildTO);
 
         logger.info("------> pullLogic :{} <-------", filePath);
 
@@ -63,6 +63,7 @@ public abstract class BasePullService {
 
             File settingFile = files.get(docRequestTO.getSettingFile());
 
+            // 读取文件内容
             String config = FileUtil.isEmpty(settingFile) ? "" : FileUtil.readString(settingFile, "UTF-8");
             AntBlogDocTO antBlogDocTO = StringUtils.isNotEmpty(config) ? JSONObject.parseObject(config,
                     AntBlogDocTO.class) : null;
@@ -129,7 +130,8 @@ public abstract class BasePullService {
         } else {
             blogContent.setContentTitle(antBlogDocTO.getName());
             blogContent.setContentCode(antBlogDocTO.getCode());
-            blogContent.setContentForeword(antBlogDocTO.getDesc());
+            blogContent.setContentForeword(StringUtils.isNotEmpty(antBlogDocTO.getDesc()) ? antBlogDocTO.getDesc() :
+                    getDesc(blogContent.getContentBody()));
         }
 
 
@@ -141,6 +143,9 @@ public abstract class BasePullService {
         AntBlogContent content = contentService.getOneByCode(blogContent.getContentCode());
         if (content != null) {
             blogContent.setId(content.getId());
+        }else{
+            blogContent.setContentHot("1");
+            blogContent.setContentStart("1");
         }
 
         contentService.saveOrUpdate(blogContent);
@@ -160,7 +165,6 @@ public abstract class BasePullService {
             blogType = new AntBlogType();
 
             blogType.setTypeClassify("1");
-
             blogType.setTypeCode(code);
             blogType.setTypeClassify(antBlogDocTO.getParentInfo().getClassType().toUpperCase());
         } else {
@@ -175,4 +179,23 @@ public abstract class BasePullService {
         blogTypeService.saveOrUpdate(blogType);
         return blogType;
     }
+
+    /**
+     * 获取文档描述
+     *
+     * @return
+     */
+    public String getDesc(String docContent) {
+        Integer index = StringUtils.indexOf(docContent, "\n|\r");
+        // 起始位置
+        Integer descStart = index > 0 ? index : 0;
+        // 结束位置
+        Integer descEnd = docContent.length() > 500 ? 500 : docContent.length();
+        String descContetn = docContent.substring(descStart, descEnd);
+//        descContetn = descContetn.replaceAll("\\r\\n", " ");
+        descContetn = descContetn.replaceAll("\\[TOC\\]", "");
+        //        logger.info("------> file :{} , {}-{} <-------", file.getPath(), descStart, descEnd);
+        return descContetn;
+    }
+
 }
