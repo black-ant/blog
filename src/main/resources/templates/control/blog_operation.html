@@ -8,6 +8,8 @@
 <!-- jquery
     ============================================ -->
 <script th:src="@{/js/vendor/jquery-1.11.3.min.js}"></script>
+<link rel="stylesheet" th:href="@{/css/select2/select2.min.css}">
+<link rel="stylesheet" th:href="@{/css/chosen/bootstrap-chosen.css}">
 <style>
     .compose-email a {
         padding: 10px 15px;
@@ -822,6 +824,23 @@
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <div class="project-details-descri project-details-mg-t-30 shadow-reset">
                         <h2>博客操作</h2>
+                        <div class="chosen-select-single mg-b-20">
+                            <label>Basic Select</label>
+                            <select data-placeholder="选择工作区间..." class="chosen-select" tabindex="-1">
+                                <option value="">Select</option>
+                                <option value="United States">United States</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="Afghanistan">Afghanistan</option>
+                                <option value="Aland Islands">Aland Islands</option>
+                                <option value="Albania">Albania</option>
+                                <option value="Algeria">Algeria</option>
+                                <option value="American Samoa">American Samoa</option>
+                                <option value="Andorra">Andorra</option>
+                                <option value="Angola">Angola</option>
+                                <option value="Anguilla">Anguilla</option>
+                                <option value="Antarctica">Antarctica</option>
+                            </select>
+                        </div>
                         <div class="compose-email">
                             <a href="#" id="new_blog_md">生成索引</a>
                         </div>
@@ -906,15 +925,28 @@
 <script th:src="@{/js/sparkline/jquery.sparkline.min.js}"></script>
 <script th:src="@{/js/sparkline/sparkline-active.js}"></script>
 
+<script th:src="@{/js/select2/select2.full.min.js}"></script>
+<script th:src="@{/js/select2/select2-active.js}"></script>
+
 <div th:replace="common/commonJS::common_js_table(~{::script})"></div>
 <!-- main JS
     ============================================ -->
 <script th:src="@{/js/main.js}"></script>
+<!-- chosen JS
+    ============================================ -->
+<script th:src="@{js/chosen/chosen.jquery.js}"></script>
+<script th:src="@{js/chosen/chosen-active.js}"></script>
 
 
 </body>
 
 <script class="code-js">
+
+    $("#new_blog_md").click(function () {
+        console.log("do blog md");
+        restApi.doBuildDoc().then(console.log("success"));
+    });
+
     $("#new_blog_md").click(function () {
         console.log("do blog md");
         restApi.doBuildDoc().then(console.log("success"));
