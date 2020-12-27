@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -38,6 +39,14 @@ public class AntBlogFolderController extends AbstractControllerView<AntBlogFolde
         List<AntBlogFolder> antBlogFolders = service.list(queryWrapper);
         modelAndView.addObject("folders", antBlogFolders);
         return modelAndView;
+    }
+
+    @GetMapping("rootList")
+    public @ResponseBody List<AntBlogFolder> getRootList() {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("type", "0");
+        List<AntBlogFolder> antBlogFolders = service.list(queryWrapper);
+        return antBlogFolders;
     }
 
     @Override

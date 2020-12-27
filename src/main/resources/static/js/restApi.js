@@ -5,15 +5,18 @@ var restApi = {
             "projectPath": "https://gitee.com/antblack/blog-doc.git",
             "type": "git"
         }
-        return restUtils.post(baseUrl + "pull/bypath", body);
+        return restUtils.post("pull/bypath", body);
     },
     doBuildDoc: function () {
-        var body ={
-            "filePath":"D:\\java\\workspace\\doc\\blogDoc",
-            "findChild":true
+        var body = {
+            "filePath": "D:\\java\\workspace\\doc\\blogDoc",
+            "findChild": true
         }
-        return restUtils.post(baseUrl + "docbuild", body);
+        return restUtils.post("docbuild", body);
     },
+    doSelectWorkSpace: function () {
+        return restUtils.get("folder/rootList");
+    }
 }
 
 var restUtils = {
@@ -43,7 +46,7 @@ var restUtils = {
         return new Promise((resolve, reject) => {
             $.ajax({
                 type: "post",
-                url: url,
+                url: baseUrl + url,
                 contentType: "application/json;charset=UTF-8",
                 data: JSON.stringify(param),
                 dataType: dataType,

@@ -826,19 +826,8 @@
                         <h2>博客操作</h2>
                         <div class="chosen-select-single mg-b-20">
                             <label>Basic Select</label>
-                            <select data-placeholder="选择工作区间..." class="chosen-select" tabindex="-1">
-                                <option value="">Select</option>
-                                <option value="United States">United States</option>
-                                <option value="United Kingdom">United Kingdom</option>
-                                <option value="Afghanistan">Afghanistan</option>
-                                <option value="Aland Islands">Aland Islands</option>
-                                <option value="Albania">Albania</option>
-                                <option value="Algeria">Algeria</option>
-                                <option value="American Samoa">American Samoa</option>
-                                <option value="Andorra">Andorra</option>
-                                <option value="Angola">Angola</option>
-                                <option value="Anguilla">Anguilla</option>
-                                <option value="Antarctica">Antarctica</option>
+                            <select id="workspaceSelect" data-placeholder="选择工作区间..." class="chosen-select"
+                                    tabindex="-1">
                             </select>
                         </div>
                         <div class="compose-email">
@@ -951,6 +940,20 @@
         console.log("do blog md");
         restApi.doBuildDoc().then(console.log("success"));
     });
+
+
+    function init() {
+        restApi.doSelectWorkSpace().then(function (data) {
+            console.log(data);
+            for (var i in data) {
+                var value = data[i].folderName;
+                $("#workspaceSelect").append("<option value=" + value + ">" + value + "</option>");
+            }
+        });
+
+    }
+
+    init();
 </script>
 
 </html>
