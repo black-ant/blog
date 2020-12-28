@@ -19,6 +19,11 @@ public class AntDocBuildTO {
     private String filePath;
 
     /**
+     * 文件代码
+     */
+    private String folderCode;
+
+    /**
      * 排除文件
      */
     private List<String> exclude;

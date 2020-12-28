@@ -1,7 +1,11 @@
 package com.gang.blog.server.controller;
 
+import com.gang.blog.server.entity.AntBlogFolder;
+import com.gang.blog.server.service.impl.AntBlogFolderServiceImpl;
 import com.gang.blog.server.service.impl.DocInfoService;
+import com.gang.blog.server.service.impl.FolderService;
 import com.gang.blog.server.to.AntDocBuildTO;
+import com.gang.common.lib.to.ResponseModel;
 import org.checkerframework.checker.units.qual.A;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,10 +30,21 @@ public class DocJsonController {
 
     @Autowired
     private DocInfoService docInfoService;
+    @Autowired
+    private AntBlogFolderServiceImpl folderService;
 
     @PostMapping
     public void buildDocJSON(@RequestBody AntDocBuildTO antDocBuildTO) {
         logger.info("------> this is in docBuild <-------");
         docInfoService.buildDocInfo(antDocBuildTO);
+    }
+
+    @PostMapping("/byCode")
+    public ResponseModel buildDocByCode(@RequestBody AntDocBuildTO antDocBuildTO) {
+        logger.info("------> this is in docBuild <-------");
+        AntBlogFolder folder = folderService.findByCode(antDocBuildTO.getFolderCode());
+        antDocBuildTO.setFilePath(folder.getFolderPath());
+        docInfoService.buildDocInfo(antDocBuildTO);
+        return ResponseModel.commonResponse("success");
     }
 }

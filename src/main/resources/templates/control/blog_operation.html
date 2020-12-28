@@ -932,11 +932,12 @@
 <script class="code-js">
 
     $("#new_blog_md").click(function () {
-        console.log("do blog md");
-        restApi.doBuildDoc().then(console.log("success"));
+        var workspaceSelect = $(".chosen-select").val();
+        console.log(workspaceSelect);
+        restApi.doBuildDoc(workspaceSelect, true).then(console.log("success"));
     });
 
-    $("#new_blog_md").click(function () {
+    $("#pull_git").click(function () {
         console.log("do blog md");
         restApi.doBuildDoc().then(console.log("success"));
     });
@@ -946,11 +947,12 @@
         restApi.doSelectWorkSpace().then(function (data) {
             console.log(data);
             for (var i in data) {
-                var value = data[i].folderName;
-                $("#workspaceSelect").append("<option value=" + value + ">" + value + "</option>");
+                var name = data[i].folderName;
+                var code = data[i].folderCode;
+                $('.chosen-select').append("<option value=" + code + ">" + name + "</option>");
             }
+            $('.chosen-select').trigger("chosen:updated");
         });
-
     }
 
     init();

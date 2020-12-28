@@ -7,12 +7,12 @@ var restApi = {
         }
         return restUtils.post("pull/bypath", body);
     },
-    doBuildDoc: function () {
+    doBuildDoc: function (code, findChild) {
         var body = {
-            "filePath": "D:\\java\\workspace\\doc\\blogDoc",
-            "findChild": true
+            "folderCode": code,
+            "findChild": findChild
         }
-        return restUtils.post("docbuild", body);
+        return restUtils.post("docbuild/byCode", body);
     },
     doSelectWorkSpace: function () {
         return restUtils.get("folder/rootList");
