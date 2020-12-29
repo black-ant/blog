@@ -52,7 +52,7 @@ public class AntBlogContentPullController {
         return ResponseModel.commonResponse(back);
     }
 
-    @Scheduled(cron = "0 0 22 1/1 * ? ")
+    //    @Scheduled(cron = "0 0 22 1/1 * ? ")
     public void scheduledPullGitInfo() {
         logger.info("------> this is in  scheduledPullGitInfo<-------");
         if (antProperties.getAutoPullTurn()) {
