@@ -1,5 +1,6 @@
 package com.gang.blog.server.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.gang.blog.server.service.impl.AntBlogSettingServiceImpl;
 import com.gang.blog.server.service.impl.AntProperties;
 import com.gang.blog.server.service.impl.FilePullService;
@@ -15,6 +16,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -23,9 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date 2020/7/5 11:17
  * @Created by zengzg
  */
-@RequestMapping("/pull")
 @RestController
-@EnableScheduling
+@RequestMapping("/pull")
 public class AntBlogContentPullController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -41,7 +42,7 @@ public class AntBlogContentPullController {
 
     @PostMapping(value = "/bypath")
     public ResponseModel getBlogByPath(@RequestBody AntBlogDocRequestTO docRequestTO) {
-
+        logger.info("------> this is post :{} <-------", JSONObject.toJSONString(docRequestTO));
         String back = "";
         if ("git".equals(docRequestTO.getType())) {
             back = gitService.pull(docRequestTO);

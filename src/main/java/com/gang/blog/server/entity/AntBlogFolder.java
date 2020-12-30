@@ -4,6 +4,7 @@ import com.gang.blog.server.entity.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -31,7 +32,9 @@ public class AntBlogFolder extends BaseEntity {
 
     private String folderCode;
 
-    private LocalDateTime updateTime;
+    private Date createDate;
+
+    private Date updateDate;
 
     /**
      * 0 : 不处理 , 1 处理
@@ -53,5 +56,10 @@ public class AntBlogFolder extends BaseEntity {
      */
     private String childIndex;
 
+    private String parentCode;
+
+    private String parentId;
+
+    private String parentName;
 
 }

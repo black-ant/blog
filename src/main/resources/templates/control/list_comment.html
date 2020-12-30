@@ -1,0 +1,159 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/commonHead :: common_header(~{::title},~{::link})">
+    <title>Blog Content</title>
+</head>
+
+<body class="darklayout">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- Header top area start-->
+<div class="wrapper-pro">
+
+
+    <div th:replace="common/commonLeft::common_left(~{::name})"></div>
+
+    <!-- Header top area start-->
+    <div class="content-inner-all">
+
+        <div th:replace="common/commonTop::common_top(~{::name})"></div>
+
+        <!-- Breadcome start-->
+        <div th:replace="common/commonAddr::common_address('App 类型')"></div>
+
+        <!-- Breadcome End-->
+        <!-- Static Table Start -->
+        <div class="data-table-area mg-b-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="sparkline13-list shadow-reset">
+                            <div class="sparkline13-hd">
+                                <div class="main-sparkline13-hd">
+                                    <h1>Projects <span class="table-project-n">Data</span> Table</h1>
+                                    <div class="sparkline13-outline-icon">
+                                        <span class="sparkline13-collapse-link"><i class="fa fa-chevron-up"></i></span>
+                                        <span><i class="fa fa-wrench"></i></span>
+                                        <span>
+                                            <button type="button" class="btn btn-primary"
+                                                    onclick="javascript:window.location.href='./get/null'">添加</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sparkline13-graph">
+                                <div class="datatable-dashv1-list custom-datatable-overright">
+                                    <div id="toolbar">
+                                        <select class="form-control">
+                                            <option value="">Export Basic</option>
+                                            <option value="all">Export All</option>
+                                            <option value="selected">Export Selected</option>
+                                        </select>
+                                    </div>
+                                    <table id="table" data-toggle="table" data-pagination="true" data-search="true"
+                                           data-show-columns="true" data-show-pagination-switch="true"
+                                           data-show-refresh="true" data-key-events="true" data-show-toggle="true"
+                                           data-resizable="true" data-cookie="true" data-cookie-id-table="saveId"
+                                           data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                                        <thead>
+                                        <tr>
+                                            <th data-field="state" data-checkbox="true"></th>
+                                            <th data-field="settingCode" data-editable="true">配置Code</th>
+                                            <th data-field="settingName" data-editable="true">属性名</th>
+                                            <th data-field="settingValue" data-editable="true">属性值</th>
+                                            <th data-field="settingType" data-editable="true">属性类型</th>
+                                            <th data-field="settingStatus">属性状态</th>
+                                            <th data-field="action">Action</th>
+                                        </tr>
+
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="data:${datalist}" th:data-id="${data.id}">
+                                            <td></td>
+                                            <td data-field="settingCode" th:text="${data.settingCode}"></td>
+                                            <td data-field="settingName" th:text="${data.settingName}"></td>
+                                            <td data-field="settingValue" th:text="${data.settingValue}"></td>
+                                            <td data-field="settingType" th:text="${data.settingType}"></td>
+                                            <td data-field="settingStatus" th:text="${data.settingStatus}"></td>
+                                            <td class="datatable-ct">
+                                                <button type="button" class="btn btn-primary"
+                                                        th:onclick="save('[(${data.id})]')">保存
+                                                </button>
+                                                <button type="button" class="btn btn-primary"
+                                                        th:onclick="deleteOne('[(${data.id})]')">删除
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Static Table End -->
+    </div>
+</div>
+<!-- Breadcome start-->
+<div th:replace="common/commonFooter::common_footer()"></div>
+
+<!-- Chat Box End-->
+<div th:replace="common/commonJS::common_js(~{::script})"></div>
+
+<!-- mCustomScrollbar JS
+    ============================================ -->
+<script th:src="@{/jjs/jquery.mCustomScrollbar.concat.min.js}"></script>
+<!-- sticky JS
+    ============================================ -->
+<script th:src="@{/jjs/jquery.sticky.js}"></script>
+<!-- scrollUp JS
+    ============================================ -->
+<script th:src="@{/jjs/jquery.scrollUp.min.js}"></script>
+
+<!-- counterup JS
+    ============================================ -->
+<script th:src="@{/js/counterup/jquery.counterup.min.js}"></script>
+<script th:src="@{/js/counterup/waypoints.min.js}"></script>
+<!-- peity JS
+    ============================================ -->
+<script th:src="@{/js/peity/jquery.peity.min.js}"></script>
+<script th:src="@{/js/peity/peity-active.js}"></script>
+<!-- sparkline JS
+    ============================================ -->
+<script th:src="@{/js/sparkline/jquery.sparkline.min.js}"></script>
+<script th:src="@{/js/sparkline/sparkline-active.js}"></script>
+
+<div th:replace="common/commonJS::common_js_table(~{::script})"></div>
+<!-- main JS
+    ============================================ -->
+<script th:src="@{/js/main.js}"></script>
+
+<script>
+    function save(id) {
+        console.log("this is ok ");
+        var tdArray = $("[data-id=" + id + "]").children("td").toArray();
+        var saveObj = {"id": id};
+        for (var index in  tdArray) {
+            var item = tdArray[index];
+            if ($(item).attr("data-field")) {
+                saveObj[$(item).attr("data-field")] = $(item).text();
+            }
+        }
+
+        console.log(saveObj);
+        antAjax.post("setting/insertOrUpdate",saveObj,function () {
+            console.log("ok");
+        })
+    }
+
+    function deleteOne(id) {
+        console.log("this is ok ");
+    }
+</script>
+</body>
+
+</html>

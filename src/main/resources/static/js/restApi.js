@@ -7,6 +7,13 @@ var restApi = {
         }
         return restUtils.post("pull/bypath", body);
     },
+    doPullFile: function (code) {
+        var body = {
+            "projectPath": code,
+            "type": "file"
+        }
+        return restUtils.post("pull/bypath", body);
+    },
     doBuildDoc: function (code, findChild) {
         var body = {
             "folderCode": code,

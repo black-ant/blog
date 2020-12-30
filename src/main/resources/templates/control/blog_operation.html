@@ -837,7 +837,7 @@
                             <a href="#" id="pull_git">拉取文档</a>
                         </div>
                         <div class="compose-email">
-                            <a href="#">刷新文档</a>
+                            <a href="#" id="pull_File">刷新文档</a>
                         </div>
                     </div>
                     <div class="sparkline7-list shadow-reset mg-t-30">
@@ -939,9 +939,13 @@
 
     $("#pull_git").click(function () {
         console.log("do blog md");
-        restApi.doBuildDoc().then(console.log("success"));
+        restApi.doPullGit().then(console.log("success"));
     });
-
+    $("#pull_File").click(function () {
+        console.log("do blog md");
+        var workspaceSelect = "D:\\java\\workspace\\doc\\blogDoc"
+        restApi.doPullFile(workspaceSelect).then(console.log("success"));
+    });
 
     function init() {
         restApi.doSelectWorkSpace().then(function (data) {

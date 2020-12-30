@@ -1,39 +1,44 @@
-
 (function ($) {
- "use strict";
-			
-	
-$('#jstree1').jstree({
-            'core' : {
-                'check_callback' : true
+    "use strict";
+
+
+    $('#jstree1').jstree({
+        'core': {
+            'check_callback': true,
+            'data': [
+                {"id": "ajson1", "parent": "#", "text": "root"},
+                {"id": "ajson2", "parent": "#", "text": "roo2"},
+                {"id": "ajson3", "parent": "ajson2", "text": "child01"},
+                {"id": "ajson4", "parent": "ajson2", "text": "child01"},
+            ]
+        },
+        'plugins': ['types', 'dnd'],
+        'types': {
+            'default': {
+                'icon': 'fa fa-folder'
             },
-            'plugins' : [ 'types', 'dnd' ],
-            'types' : {
-                'default' : {
-                    'icon' : 'fa fa-folder'
-                },
-                'html' : {
-                    'icon' : 'fa fa-file-code-o'
-                },
-                'svg' : {
-                    'icon' : 'fa fa-file-picture-o'
-                },
-                'css' : {
-                    'icon' : 'fa fa-file-code-o'
-                },
-                'img' : {
-                    'icon' : 'fa fa-file-image-o'
-                },
-                'js' : {
-                    'icon' : 'fa fa-file-text-o'
-                }
-
+            'html': {
+                'icon': 'fa fa-file-code-o'
+            },
+            'svg': {
+                'icon': 'fa fa-file-picture-o'
+            },
+            'css': {
+                'icon': 'fa fa-file-code-o'
+            },
+            'img': {
+                'icon': 'fa fa-file-image-o'
+            },
+            'js': {
+                'icon': 'fa fa-file-text-o'
             }
-        });
 
-        $('#using_json').jstree({
-            'core' : {
-            'data' : [
+        }
+    });
+
+    $('#using_json').jstree({
+        'core': {
+            'data': [
                 'Empty Folder',
                 {
                     'text': 'Resources',
@@ -114,8 +119,9 @@ $('#jstree1').jstree({
                 'Scripts',
                 'Templates',
             ]
-        } });
-	
-	
-})(jQuery); 
+        }
+    });
+
+
+})(jQuery);
 

@@ -27,6 +27,14 @@ public class AntBlogDocRequestTO {
 
     private Map<String, AntBlogDocTO> treeMap;
 
+    private String rootPath;
+
+    private String parentFile;
+
+    private String parentId;
+
+    private String parentCode;
+
     public AntBlogDocRequestTO() {
     }
 
@@ -66,5 +74,37 @@ public class AntBlogDocRequestTO {
 
     public void setTreeMap(Map<String, AntBlogDocTO> treeMap) {
         this.treeMap = treeMap;
+    }
+
+    public String getRootPath() {
+        return rootPath;
+    }
+
+    public void setRootPath(String rootPath) {
+        this.rootPath = rootPath;
+    }
+
+    public String getParentFile() {
+        return parentFile;
+    }
+
+    public void setParentFile(String parentFile) {
+        this.parentFile = parentFile;
+    }
+
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getParentCode() {
+        return parentCode;
+    }
+
+    public void setParentCode(String parentCode) {
+        this.parentCode = parentCode;
     }
 }
