@@ -1,5 +1,6 @@
 package com.gang.blog.server.to;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -29,11 +30,7 @@ public class AntBlogDocRequestTO {
 
     private String rootPath;
 
-    private String parentFile;
-
-    private String parentId;
-
-    private String parentCode;
+    private Map<String, String> folderMap = new HashMap<>();
 
     public AntBlogDocRequestTO() {
     }
@@ -84,27 +81,11 @@ public class AntBlogDocRequestTO {
         this.rootPath = rootPath;
     }
 
-    public String getParentFile() {
-        return parentFile;
+    public Map<String, String> getFolderMap() {
+        return folderMap;
     }
 
-    public void setParentFile(String parentFile) {
-        this.parentFile = parentFile;
-    }
-
-    public String getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(String parentId) {
-        this.parentId = parentId;
-    }
-
-    public String getParentCode() {
-        return parentCode;
-    }
-
-    public void setParentCode(String parentCode) {
-        this.parentCode = parentCode;
+    public void setFolderMap(Map<String, String> folderMap) {
+        this.folderMap = folderMap;
     }
 }

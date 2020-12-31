@@ -34,7 +34,7 @@ public class AntBlogFolderServiceImpl extends ServiceImpl<AntBlogFolderMapper, A
         QueryWrapper wrapper = new QueryWrapper();
         wrapper.eq("folder_code", code);
         List<AntBlogFolder> list = this.list(wrapper);
-        return list.get(0);
+        return list.isEmpty() ? null : list.get(0);
     }
 
 
@@ -62,10 +62,12 @@ public class AntBlogFolderServiceImpl extends ServiceImpl<AntBlogFolderMapper, A
 
         blogFolder.setParentName(fileItem.getParent());
         blogFolder.setParentCode(parentRelativePath);
-        blogFolder.setParentId(docRequestTO.getParentId());
+        blogFolder.setParentId(docRequestTO.getFolderMap().get(parentRelativePath));
 
         blogFolder.setRoot(docRequestTO.getRootPath());
+//        blogFolder.setChildIndex(relativePath.split("/\").length - 1);
         saveOrUpdate(blogFolder);
+        docRequestTO.getFolderMap().put(relativePath, blogFolder.getId());
         return blogFolder.getId();
     }
 

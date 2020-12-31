@@ -63,7 +63,7 @@ public abstract class BasePullService {
         // Get folder Map Suffix
         File currentFile = FileUtil.file(filePath);
         // 构建根节点
-        buildRootFile(filePath, docRequestTO);
+        buildRootFile(currentFile, docRequestTO);
         Map<String, File> files = FileUtils.getFilesMapNoSuffix(filePath);
         if (!CollectionUtils.isEmpty(files)) {
             folderService.createFolder(currentFile, docRequestTO);
@@ -110,9 +110,10 @@ public abstract class BasePullService {
      * @param workSpace
      * @param docRequestTO
      */
-    public void buildRootFile(String workSpace, AntBlogDocRequestTO docRequestTO) {
+    public void buildRootFile(File workSpace, AntBlogDocRequestTO docRequestTO) {
         if (StringUtils.isEmpty(docRequestTO.getRootPath())) {
-            docRequestTO.setRootPath(workSpace);
+            String rootPath = workSpace.getParentFile().getPath();
+            docRequestTO.setRootPath(rootPath);
         }
     }
 

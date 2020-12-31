@@ -54,7 +54,7 @@ public class AntBlogFolder extends BaseEntity {
     /**
      * 索引
      */
-    private String childIndex;
+    private Integer childIndex;
 
     private String parentCode;
 
