@@ -37,6 +37,14 @@ var antLocation = {
             return unescape(r[2]);
         return null; //返回参数值
     },
+    getLastPathVarible() {
+        var htmlHref = window.location.href;
+        htmlHref = htmlHref.replace(/^http:\/\/[^/]+/, "");
+        var addr = htmlHref.substr(htmlHref.lastIndexOf('/', htmlHref.lastIndexOf('/') - 1) + 1);
+        var index = addr.lastIndexOf("\/");
+        //js 获取字符串中最后一个斜杠后面的内容
+        return decodeURI(addr.substring(index + 1, addr.length));
+    },
     GetQueryStringByEncode: function (name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
         var r = window.location.search.substr(1).match(reg); //匹配目标参数

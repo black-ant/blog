@@ -66,7 +66,7 @@ public abstract class BasePullService {
         buildRootFile(currentFile, docRequestTO);
         Map<String, File> files = FileUtils.getFilesMapNoSuffix(filePath);
         if (!CollectionUtils.isEmpty(files)) {
-            folderService.createFolder(currentFile, docRequestTO);
+            String folderId = folderService.createFolder(currentFile, docRequestTO);
             File settingFile = files.get(docRequestTO.getSettingFile());
 
             // 读取文件内容
@@ -92,7 +92,7 @@ public abstract class BasePullService {
                             if (blogDocTOChild != null) {
                                 blogDocTOChild.setParentInfo(antBlogDocTO);
                                 blogDocTOChild.setCode(BlogFileUtils.getFileName(fileItem.getName()));
-                                contentService.createContent(fileItem, blogDocTOChild);
+                                contentService.createContent(fileItem, blogDocTOChild, folderId);
                             }
                         }
                     }

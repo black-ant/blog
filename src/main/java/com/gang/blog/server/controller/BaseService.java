@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.PostConstruct;
@@ -37,6 +38,12 @@ public class BaseService<T extends IService, D extends BaseEntity> {
 //        String className = reflectionUtils.getClassRealType(this.getClass(), 0).getName();
 //        this.service = (IService)context.getBean(className);
 //    }
+
+    @GetMapping("/getOne/{key}")
+    @ResponseBody
+    public BlogResponseModel getOne(@PathVariable("key") String key) {
+        return BlogResponseModel.commonResponse(service.getById(key));
+    }
 
     @GetMapping("delete")
     public BlogResponseModel delete(@PathVariable("key") String key) {

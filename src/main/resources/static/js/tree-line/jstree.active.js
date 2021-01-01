@@ -1,16 +1,10 @@
-(function ($) {
-    "use strict";
+"use strict";
 
-
+function treeInit(data) {
     $('#jstree1').jstree({
         'core': {
             'check_callback': true,
-            'data': [
-                {"id": "ajson1", "parent": "#", "text": "root"},
-                {"id": "ajson2", "parent": "#", "text": "roo2"},
-                {"id": "ajson3", "parent": "ajson2", "text": "child01"},
-                {"id": "ajson4", "parent": "ajson2", "text": "child01"},
-            ]
+            'data': data
         },
         'plugins': ['types', 'dnd'],
         'types': {
@@ -35,93 +29,7 @@
 
         }
     });
-
-    $('#using_json').jstree({
-        'core': {
-            'data': [
-                'Empty Folder',
-                {
-                    'text': 'Resources',
-                    'state': {
-                        'opened': true
-                    },
-                    'children': [
-                        {
-                            'text': 'css',
-                            'children': [
-                                {
-                                    'text': 'animate.css', 'icon': 'none'
-                                },
-                                {
-                                    'text': 'bootstrap.css', 'icon': 'none'
-                                },
-                                {
-                                    'text': 'main.css', 'icon': 'none'
-                                },
-                                {
-                                    'text': 'style.css', 'icon': 'none'
-                                }
-                            ],
-                            'state': {
-                                'opened': true
-                            }
-                        },
-                        {
-                            'text': 'js',
-                            'children': [
-                                {
-                                    'text': 'bootstrap.js', 'icon': 'none'
-                                },
-                                {
-                                    'text': 'inspinia.min.js', 'icon': 'none'
-                                },
-                                {
-                                    'text': 'jquery.min.js', 'icon': 'none'
-                                },
-                                {
-                                    'text': 'jsTree.min.js', 'icon': 'none'
-                                },
-                                {
-                                    'text': 'custom.min.js', 'icon': 'none'
-                                }
-                            ],
-                            'state': {
-                                'opened': true
-                            }
-                        },
-                        {
-                            'text': 'html',
-                            'children': [
-                                {
-                                    'text': 'layout.html', 'icon': 'none'
-                                },
-                                {
-                                    'text': 'navigation.html', 'icon': 'none'
-                                },
-                                {
-                                    'text': 'navbar.html', 'icon': 'none'
-                                },
-                                {
-                                    'text': 'footer.html', 'icon': 'none'
-                                },
-                                {
-                                    'text': 'sidebar.html', 'icon': 'none'
-                                }
-                            ],
-                            'state': {
-                                'opened': true
-                            }
-                        }
-                    ]
-                },
-                'Fonts',
-                'Images',
-                'Scripts',
-                'Templates',
-            ]
-        }
-    });
+}
 
 
-})(jQuery);
 

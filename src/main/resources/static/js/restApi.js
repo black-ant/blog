@@ -23,7 +23,17 @@ var restApi = {
     },
     doSelectWorkSpace: function () {
         return restUtils.get("folder/rootList");
-    }
+    },
+    doSelectWorkSpaceFolder: function () {
+        var root = $.base64.encode("D:\\java\\workspace\\doc");
+        return restUtils.get("folder/folderList?root=" + root);
+    },
+    doSelectFolderDoc: function (folderId) {
+        return restUtils.get("content/byFolder?folderId=" + folderId);
+    },
+    selectDocById: function (folderId) {
+        return restUtils.get("/content/getOne/" + folderId);
+    },
 }
 
 var restUtils = {

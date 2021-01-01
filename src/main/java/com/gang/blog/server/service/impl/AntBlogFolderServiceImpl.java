@@ -65,7 +65,7 @@ public class AntBlogFolderServiceImpl extends ServiceImpl<AntBlogFolderMapper, A
         blogFolder.setParentId(docRequestTO.getFolderMap().get(parentRelativePath));
 
         blogFolder.setRoot(docRequestTO.getRootPath());
-//        blogFolder.setChildIndex(relativePath.split("/\").length - 1);
+        blogFolder.setChildIndex(docRequestTO.getFolderMap().size() + 1);
         saveOrUpdate(blogFolder);
         docRequestTO.getFolderMap().put(relativePath, blogFolder.getId());
         return blogFolder.getId();

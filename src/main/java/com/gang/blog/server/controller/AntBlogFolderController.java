@@ -1,16 +1,19 @@
 package com.gang.blog.server.controller;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.gang.blog.server.entity.AntBlogFolder;
-import com.gang.blog.server.service.impl.AntBlogContentServiceImpl;
 import com.gang.blog.server.service.impl.AntBlogFolderServiceImpl;
-import org.checkerframework.checker.units.qual.A;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Base64Utils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -41,8 +44,26 @@ public class AntBlogFolderController extends AbstractControllerView<AntBlogFolde
         return modelAndView;
     }
 
+    @GetMapping("folderList")
+    @ResponseBody
+    public JSONArray getByRoot(@RequestParam(name = "root") String root) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("root", new String(Base64Utils.decodeFromString(root)));
+        List<AntBlogFolder> antBlogFolders = service.list(queryWrapper);
+        JSONArray array = new JSONArray();
+        antBlogFolders.forEach(item -> {
+            JSONObject folderItem = new JSONObject();
+            folderItem.put("id", item.getId());
+            folderItem.put("parent", StringUtils.isEmpty(item.getParentId()) ? "#" : item.getParentId());
+            folderItem.put("text", item.getFolderName());
+            array.add(folderItem);
+        });
+        return array;
+    }
+
     @GetMapping("rootList")
-    public @ResponseBody List<AntBlogFolder> getRootList() {
+    @ResponseBody
+    public List<AntBlogFolder> getRootList() {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("type", "0");
         List<AntBlogFolder> antBlogFolders = service.list(queryWrapper);

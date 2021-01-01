@@ -227,24 +227,26 @@
 </div>
 <script class="code-js">
 
-    var content = "";
-    var editor;
+    var key = antLocation.getLastPathVarible();
+    restApi.selectDocById(key).then(function (data) {
+        var content = data.data.contentBody;
+        var editor;
 
-    if ("" != ($("#contentBody").val())) {
-        content = antStringUtils.splitToArray($("#contentBody").val()).join("\n");
-        console.log(content);
-    } else {
-        console.log("Content is null");
-    }
+        if ("" != ($("#contentBody").val())) {
+            content = antStringUtils.splitToArray($("#contentBody").val()).join("\n");
+            console.log(content);
+        } else {
+            console.log("Content is null");
+        }
 
-    editor = new tui.Editor({
-        el: document.querySelector('#editSection'),
-        previewStyle: 'vertical',
-        height: '800px',
-        initialValue: content,
-        exts: ['table', 'uml']
-    });
-
+        editor = new tui.Editor({
+            el: document.querySelector('#editSection'),
+            previewStyle: 'vertical',
+            height: '800px',
+            initialValue: content,
+            exts: ['table', 'uml']
+        });
+    })
     var contentUtils = {
         send: function () {
 

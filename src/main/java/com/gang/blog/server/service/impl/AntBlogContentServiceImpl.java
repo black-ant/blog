@@ -68,11 +68,12 @@ public class AntBlogContentServiceImpl extends ServiceImpl<AntBlogContentMapper,
      * @param antBlogDocTO
      * @return
      */
-    public String createContent(File file, AntBlogDocTO antBlogDocTO) {
+    public String createContent(File file, AntBlogDocTO antBlogDocTO, String parentId) {
 
         AntBlogContent blogContent = new AntBlogContent();
         blogContent.setContentBodyType("MARKDOWN");
         blogContent.setContentBody(FileUtil.readString(file, "UTF-8"));
+        blogContent.setContentFolder(parentId);
         if (antBlogDocTO == null) {
             blogContent.setContentTitle(file.getName());
             blogContent.setContentCode(file.getName());

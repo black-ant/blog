@@ -31,7 +31,7 @@ public abstract class AbstractControllerView<T extends IService, D extends BaseE
     private String controlViewPackage;
 
     @GetMapping("get/{key}")
-    public ModelAndView getOne(@PathVariable("key") String key) {
+    public ModelAndView get(@PathVariable("key") String key) {
         ModelAndView modelAndView = getModelAndView("edit");
         if (key.equals("null") || key.equals("0")) {
             modelAndView.addObject("data", null);
